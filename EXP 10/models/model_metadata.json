@@ -1,0 +1,125 @@
+{
+    "preprocessing_summary": {
+        "total_records": 700,
+        "input_features_count": 6,
+        "missing_values": 0,
+        "duplicate_records": 0,
+        "categories_count": 8,
+        "medicines_count": 24,
+        "categories_list": [
+            "Allergy Medicine",
+            "Antibiotics",
+            "Cardiovascular",
+            "Diabetes Medicine",
+            "Gastric Medicine",
+            "Pain Relief",
+            "Respiratory",
+            "Vitamins"
+        ],
+        "medicines_list": [
+            "Amlodipine",
+            "Amoxicillin",
+            "Aspirin",
+            "Atorvastatin",
+            "Azithromycin",
+            "Cephalexin",
+            "Cetirizine",
+            "Ciprofloxacin",
+            "Fexofenadine",
+            "Glimepiride",
+            "Ibuprofen",
+            "Insulin Glargine",
+            "Loratadine",
+            "Metformin",
+            "Montelukast",
+            "Omeprazole",
+            "Pantoprazole",
+            "Paracetamol",
+            "Ranitidine",
+            "Salbutamol",
+            "Tramadol",
+            "Vitamin C",
+            "Vitamin D3",
+            "Zinc Sulfate"
+        ],
+        "target_stats": {
+            "min": 135.0,
+            "max": 1411.0,
+            "mean": 579.42,
+            "median": 546.5,
+            "std": 225.37
+        },
+        "stock_stats": {
+            "min": 13.0,
+            "max": 1949.0,
+            "mean": 410.32,
+            "median": 355.0
+        }
+    },
+    "model_metadata": {
+        "selected_algorithm": "Linear Regression",
+        "selection_metric": "Lowest 5-Fold Cross-Validation RMSE on Training Data",
+        "dataset_type": "Simulated Educational Demonstration Dataset",
+        "stock_unit": "units",
+        "sample_counts": {
+            "total": 700,
+            "train": 560,
+            "test": 140,
+            "train_ratio": 0.8,
+            "test_ratio": 0.2
+        },
+        "feature_names": [
+            "Medicine Name",
+            "Medicine Category",
+            "Current Stock",
+            "Previous Consumption",
+            "Average Daily Usage",
+            "Supplier Delivery Time"
+        ],
+        "target_name": "Predicted Demand",
+        "cross_validation_results": {
+            "Linear Regression": {
+                "mean_rmse": 35.154,
+                "std_rmse": 0.823,
+                "mean_mae": 27.702,
+                "mean_r2": 0.9762,
+                "fold_rmse": [
+                    35.48,
+                    33.55,
+                    35.32,
+                    35.88,
+                    35.54
+                ]
+            },
+            "Random Forest Regressor": {
+                "mean_rmse": 40.937,
+                "std_rmse": 2.242,
+                "mean_mae": 31.583,
+                "mean_r2": 0.9675,
+                "fold_rmse": [
+                    38.91,
+                    38.84,
+                    44.23,
+                    39.69,
+                    43.0
+                ]
+            }
+        },
+        "test_evaluation": {
+            "MAE": 28.892,
+            "MSE": 1312.985,
+            "RMSE": 36.235,
+            "R2": 0.9698
+        },
+        "inventory_policy": {
+            "safety_stock_formula": "Average Daily Usage * ceil(Supplier Delivery Time * 0.5)",
+            "recommended_stock_formula": "Predicted Demand + Safety Stock",
+            "reorder_quantity_formula": "max(0, Recommended Stock - Current Stock)",
+            "stock_status_thresholds": {
+                "Low Stock": "Current Stock < (Predicted Demand * 0.5)",
+                "Overstock": "Current Stock > (Recommended Stock * 1.25)",
+                "Sufficient Stock": "Otherwise"
+            }
+        }
+    }
+}

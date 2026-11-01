@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Medicine Stock Prediction Using Linear Regression and Random Forest Regression</title>
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 18mm 18mm 18mm 18mm;
+    @bottom-right {
+      content: counter(page);
+      font-family: 'Times New Roman', Times, Georgia, serif;
+      font-size: 10pt;
+    }
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Times New Roman', Times, Georgia, serif;
+    font-size: 11pt;
+    line-height: 1.34;
+    color: #111111;
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+  }
+
+  .page {
+    page-break-after: always;
+    page-break-inside: avoid;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .page:last-child {
+    page-break-after: avoid;
+  }
+
+  h1.project-title {
+    font-size: 13.5pt;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 0 4px 0;
+    line-height: 1.25;
+  }
+
+  h2.project-subtitle {
+    font-size: 11pt;
+    font-style: italic;
+    font-weight: normal;
+    text-align: center;
+    margin: 0 0 16px 0;
+  }
+
+  h3.section-heading {
+    font-size: 11.5pt;
+    font-weight: bold;
+    margin: 12px 0 6px 0;
+  }
+
+  p {
+    text-align: justify;
+    margin: 0 0 8px 0;
+  }
+
+  ol, ul {
+    margin: 4px 0 8px 0;
+    padding-left: 22px;
+  }
+
+  li {
+    margin-bottom: 4px;
+    text-align: justify;
+  }
+
+  .bullet-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 4px 0 8px 0;
+  }
+
+  .bullet-list li {
+    margin-bottom: 3px;
+    padding-left: 14px;
+    text-indent: -14px;
+  }
+
+  .bullet-list li::before {
+    content: "• ";
+    font-weight: bold;
+  }
+
+  .code-container {
+    background-color: #f8f9fa;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin: 4px 0 10px 0;
+    font-family: Consolas, 'Courier New', Monaco, monospace;
+    font-size: 8.5pt;
+    line-height: 1.3;
+    color: #1e293b;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .code-title {
+    font-weight: bold;
+    font-size: 10pt;
+    margin: 8px 0 2px 0;
+  }
+
+  .code-comment { color: #008000; }
+  .code-keyword { color: #0000ff; }
+  .code-string  { color: #a31515; }
+
+  .figure-box {
+    text-align: center;
+    margin: 6px auto 10px auto;
+    width: 100%;
+  }
+
+  .figure-img {
+    max-height: 280px;
+    max-width: 92%;
+    height: auto;
+    border: 1px solid #cbd5e1;
+    border-radius: 3px;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+
+  .figure-img.vscode {
+    max-height: 380px;
+    max-width: 55%;
+  }
+
+  .figure-img.hero {
+    max-height: 290px;
+    max-width: 95%;
+  }
+
+  .figure-caption {
+    font-style: italic;
+    font-size: 9.5pt;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    color: #222222;
+  }
+</style>
+</head>
+<body>
+
+  <!-- ==========================================
+       PAGE 1: Title, Problem Statement, Objectives, Software/Hardware (Part 1)
+       ========================================== -->
+  <div class="page">
+    <h1 class="project-title">Medicine Stock Prediction Using Linear Regression and Random Forest Regression</h1>
+    <h2 class="project-subtitle">(Hospital Pharmacy Medicine Inventory and Stock Requirement Prediction using Machine Learning)</h2>
+
+    <h3 class="section-heading">Problem Statement:</h3>
+    <p>
+      Hospital pharmacy inventory management represents one of the most vital operational pillars in healthcare administration. Maintaining an optimal stock of life-saving medicines requires an intricate balance between preventing critical inventory stockouts and avoiding excessive overstocking. A shortage of essential pharmaceuticals—such as antibiotics, analgesics, insulin, respiratory treatments, and cardiovascular drugs—can directly compromise patient care, leading to clinical treatment interruptions, delayed therapeutic interventions, and costly emergency procurements. Conversely, excessive medicine inventory leads to substantial capital lockup, elevated storage and refrigeration expenses, and a high risk of drug expiration prior to dispensing.
+    </p>
+    <p>
+      In many healthcare institutions, medicine replenishment decisions still depend on manual heuristic estimations, periodic visual stock inspections, or static minimum-threshold rules that fail to capture historical consumption trends, patient burn rates, and supplier delivery delays. There is, therefore, an urgent need for an automated, data-driven, and accessible machine learning system capable of predicting future continuous medicine demand and recommending transparent inventory reorder quantities with clear safety stock buffers. This project designs and implements an end-to-end web-based Medicine Stock Prediction system that performs data preprocessing, feature encoding, model benchmarking using Linear Regression and Random Forest Regressor, 5-fold cross-validation on training data, and held-out test evaluation using regression metrics (MAE, MSE, RMSE, R²).
+    </p>
+
+    <h3 class="section-heading">Objectives:</h3>
+    <ol>
+      <li>To collect, validate, and inspect a structured pharmaceutical inventory dataset containing medicine usage, current stock, historical consumption, and distributor delivery lead times.</li>
+      <li>To perform thorough Exploratory Data Analysis (EDA) with statistical visualizations (histograms, scatter plots, category demand distributions, lead-time box plots, and correlation heatmaps).</li>
+      <li>To construct a robust Scikit-learn preprocessing pipeline using <code>StandardScaler</code> for numerical attributes and <code>OneHotEncoder(handle_unknown='ignore')</code> for categorical features, fitted strictly on training data.</li>
+      <li>To design, train, and compare baseline Linear Regression and ensemble Random Forest Regressor models using 5-fold cross-validation solely on the training partition.</li>
+      <li>To evaluate the champion model on a held-out test set and report Mean Absolute Error (MAE), Mean Squared Error (MSE), Root Mean Squared Error (RMSE), and R-squared (R²), paired with diagnostic residual plots.</li>
+      <li>To build a Flask-based backend and responsive web front-end that accepts medicine inventory parameters, generates real-time ML demand forecasts, and calculates recommended reorder quantities and stock status (Low Stock, Sufficient Stock, Overstock).</li>
+    </ol>
+
+    <h3 class="section-heading">Software / Hardware Required:</h3>
+    <ul class="bullet-list">
+      <li><strong>Operating System:</strong> Windows / Linux / macOS</li>
+      <li><strong>IDE:</strong> Visual Studio Code</li>
+      <li><strong>Language:</strong> Python 3.10+</li>
+      <li><strong>Backend Framework:</strong> Flask (REST API)</li>
+    </ul>
+  </div>
+
+  <!-- ==========================================
+       PAGE 2: Software Continued, Project Directory Structure
+       ========================================== -->
+  <div class="page">
+    <ul class="bullet-list" style="margin-top: 0;">
+      <li><strong>Machine Learning:</strong> scikit-learn (LinearRegression, RandomForestRegressor, ColumnTransformer, Pipeline)</li>
+      <li><strong>Model Persistence:</strong> Joblib</li>
+      <li><strong>Data Processing:</strong> Pandas, NumPy</li>
+      <li><strong>Data Visualization:</strong> Matplotlib, Seaborn</li>
+      <li><strong>Frontend:</strong> HTML5, CSS3, JavaScript</li>
+      <li><strong>Dataset:</strong> 700-record Pharmaceutical Inventory Dataset (Simulated Educational Demonstration Dataset)</li>
+      <li><strong>Version Control:</strong> Git</li>
+    </ul>
+
+    <h3 class="section-heading">Project Directory Structure:</h3>
+    <p>
+      The project (“MedicineStockPrediction”) is organized as a Flask backend with a separate dataset, trained-model, static plots, and frontend template folder, as shown below.
+    </p>
+
+    <div class="figure-box">
+      <img src="file:///C:/Users/KRISHNA/.gemini/antigravity/scratch/MedicineStockPrediction/static/screenshots/vscode_tree.png" alt="VS Code Directory Structure" class="figure-img vscode">
+      <div class="figure-caption">Fig 1: Project directory structure of MedicineStockPrediction in Visual Studio Code</div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       PAGE 3: Procedure & Implementation Code (Preprocessing)
+       ========================================== -->
+  <div class="page">
+    <h3 class="section-heading">Procedure:</h3>
+    <ol>
+      <li>Prepare and inspect the pharmaceutical inventory dataset (<code>data/medicine_stock.csv</code>) containing 700 records with 6 predictive features and continuous medicine demand.</li>
+      <li>Perform data validation to verify zero missing values, zero duplicate entries, valid data types, and non-negativity across all numerical variables.</li>
+      <li>Conduct Exploratory Data Analysis (EDA) and generate 6 visual plots in <code>static/plots/</code> to examine demand distributions, category-level usage, delivery lead times, and feature correlations.</li>
+      <li>Partition the dataset into 80% training data (560 samples) and 20% held-out test data (140 samples) using <code>train_test_split(test_size=0.2, random_state=42)</code>.</li>
+      <li>Build a Scikit-learn <code>ColumnTransformer</code> pipeline incorporating <code>StandardScaler</code> for numeric features and <code>OneHotEncoder(handle_unknown='ignore')</code> for categorical features, fitted exclusively on training data.</li>
+      <li>Train both Linear Regression and Random Forest Regressor models using 5-fold cross-validation on the training set to evaluate generalization error.</li>
+      <li>Select the champion algorithm based on the lowest cross-validation RMSE (Linear Regression achieved 35.15 units).</li>
+      <li>Evaluate the selected model pipeline on the held-out test set, reporting MAE, MSE, RMSE, and R², and generate Actual vs. Predicted and Residual diagnostic plots.</li>
+      <li>Serialize the complete fitted pipeline to <code>models/medicine_stock_model.pkl</code> and export metadata to <code>models/model_metadata.json</code>.</li>
+      <li>Launch the Flask web server (<code>app.py</code>), process user input through the prediction form, execute pipeline inference, and compute inventory replenishment metrics (safety stock, target stock, reorder qty, stock status).</li>
+    </ol>
+
+    <h3 class="section-heading">Implementation Code:</h3>
+    <p style="font-style: italic; color: #444; margin-bottom: 6px;">
+      Representative implementation of the key modules used in the project, based on the pipeline shown in the application.
+    </p>
+
+    <div class="code-title">1. Data Preprocessing & ColumnTransformer Pipeline (train_model.py)</div>
+    <div class="code-container"><span class="code-keyword">import</span> pandas <span class="code-keyword">as</span> pd
+<span class="code-keyword">from</span> sklearn.model_selection <span class="code-keyword">import</span> train_test_split
+<span class="code-keyword">from</span> sklearn.preprocessing <span class="code-keyword">import</span> StandardScaler, OneHotEncoder
+<span class="code-keyword">from</span> sklearn.compose <span class="code-keyword">import</span> ColumnTransformer
+
+df = pd.read_csv(<span class="code-string">"data/medicine_stock.csv"</span>)
+feature_cols = [<span class="code-string">"Medicine Name"</span>, <span class="code-string">"Medicine Category"</span>, <span class="code-string">"Current Stock"</span>,
+                <span class="code-string">"Previous Consumption"</span>, <span class="code-string">"Average Daily Usage"</span>, <span class="code-string">"Supplier Delivery Time"</span>]
+X, y = df[feature_cols], df[<span class="code-string">"Predicted Demand"</span>]
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=42)
+
+numeric_features = [<span class="code-string">"Current Stock"</span>, <span class="code-string">"Previous Consumption"</span>, <span class="code-string">"Average Daily Usage"</span>, <span class="code-string">"Supplier Delivery Time"</span>]
+categorical_features = [<span class="code-string">"Medicine Name"</span>, <span class="code-string">"Medicine Category"</span>]
+
+preprocessor = ColumnTransformer(transformers=[
+    (<span class="code-string">"num"</span>, StandardScaler(), numeric_features),
+    (<span class="code-string">"cat"</span>, OneHotEncoder(handle_unknown=<span class="code-string">"ignore"</span>, sparse_output=<span class="code-keyword">False</span>), categorical_features)
+])</div>
+  </div>
+
+  <!-- ==========================================
+       PAGE 4: Implementation Code (Training & Evaluation)
+       ========================================== -->
+  <div class="page">
+    <div class="code-title">2. Model Training & 5-Fold Cross-Validation (train_model.py)</div>
+    <div class="code-container"><span class="code-keyword">from</span> sklearn.linear_model <span class="code-keyword">import</span> LinearRegression
+<span class="code-keyword">from</span> sklearn.ensemble <span class="code-keyword">import</span> RandomForestRegressor
+<span class="code-keyword">from</span> sklearn.model_selection <span class="code-keyword">import</span> KFold, cross_validate
+<span class="code-keyword">from</span> sklearn.pipeline <span class="code-keyword">import</span> Pipeline
+<span class="code-keyword">import</span> joblib, numpy <span class="code-keyword">as</span> np
+
+models = {
+    <span class="code-string">"Linear Regression"</span>: LinearRegression(),
+    <span class="code-string">"Random Forest Regressor"</span>: RandomForestRegressor(n_estimators=100, random_state=42)
+}
+
+cv = KFold(n_splits=5, shuffle=<span class="code-keyword">True</span>, random_state=42)
+cv_results = {}
+
+<span class="code-keyword">for</span> name, model <span class="code-keyword">in</span> models.items():
+    pipeline = Pipeline(steps=[(<span class="code-string">"preprocessor"</span>, preprocessor), (<span class="code-string">"regressor"</span>, model)])
+    scores = cross_validate(pipeline, X_train, y_train, cv=cv,
+                            scoring=[<span class="code-string">"neg_root_mean_squared_error"</span>, <span class="code-string">"r2"</span>])
+    cv_results[name] = -np.mean(scores[<span class="code-string">"test_neg_root_mean_squared_error"</span>])
+
+<span class="code-comment"># Select champion model based on lowest cross-validation RMSE</span>
+best_model_name = min(cv_results, key=cv_results.get)
+final_pipeline = Pipeline(steps=[(<span class="code-string">"preprocessor"</span>, preprocessor), (<span class="code-string">"regressor"</span>, models[best_model_name])])
+final_pipeline.fit(X_train, y_train)
+joblib.dump(final_pipeline, <span class="code-string">"models/medicine_stock_model.pkl"</span>)</div>
+
+    <div class="code-title">3. Test Set Evaluation & Residual Calculations (train_model.py)</div>
+    <div class="code-container"><span class="code-keyword">from</span> sklearn.metrics <span class="code-keyword">import</span> mean_absolute_error, mean_squared_error, r2_score
+
+y_pred = final_pipeline.predict(X_test)
+y_pred = np.clip(y_pred, 0, <span class="code-keyword">None</span>)  <span class="code-comment"># Enforce non-negativity</span>
+
+mae = mean_absolute_error(y_test, y_pred)
+mse = mean_squared_error(y_test, y_pred)
+rmse = np.sqrt(mse)
+r2 = r2_score(y_test, y_pred)
+
+print(f<span class="code-string">"Test MAE: {mae:.2f} | RMSE: {rmse:.2f} | R2: {r2:.4f}"</span>)</div>
+  </div>
+
+  <!-- ==========================================
+       PAGE 5: Implementation Code (Policy & Flask Route)
+       ========================================== -->
+  <div class="page">
+    <div class="code-title">4. Inventory Replenishment Policy Calculation (app.py)</div>
+    <div class="code-container"><span class="code-keyword">import</span> math
+
+<span class="code-keyword">def</span> calculate_inventory_policy(predicted_demand, current_stock, daily_usage, delivery_time):
+    <span class="code-comment"># Safety stock buffer protecting against lead time demand shocks</span>
+    safety_stock = int(math.ceil(daily_usage * math.ceil(delivery_time * 0.5)))
+    recommended_stock = int(math.ceil(predicted_demand + safety_stock))
+    reorder_quantity = max(0, recommended_stock - int(current_stock))
+
+    <span class="code-keyword">if</span> current_stock < (predicted_demand * 0.5):
+        stock_status = <span class="code-string">"Low Stock"</span>
+    <span class="code-keyword">elif</span> current_stock > (recommended_stock * 1.25):
+        stock_status = <span class="code-string">"Overstock"</span>
+    <span class="code-keyword">else</span>:
+        stock_status = <span class="code-string">"Sufficient Stock"</span>
+
+    <span class="code-keyword">return</span> {
+        <span class="code-string">"safety_stock"</span>: safety_stock, <span class="code-string">"recommended_stock"</span>: recommended_stock,
+        <span class="code-string">"reorder_quantity"</span>: reorder_quantity, <span class="code-string">"stock_status"</span>: stock_status
+    }</div>
+
+    <div class="code-title">5. Flask Prediction Endpoint (app.py)</div>
+    <div class="code-container"><span class="code-keyword">from</span> flask <span class="code-keyword">import</span> Flask, render_template, request
+<span class="code-keyword">import</span> joblib, pandas <span class="code-keyword">as</span> pd
+
+app = Flask(__name__)
+model_pipeline = joblib.load(<span class="code-string">"models/medicine_stock_model.pkl"</span>)
+
+@app.route(<span class="code-string">"/"</span>, methods=[<span class="code-string">"GET"</span>, <span class="code-string">"POST"</span>])
+<span class="code-keyword">def</span> index():
+    prediction_result = <span class="code-keyword">None</span>
+    <span class="code-keyword">if</span> request.method == <span class="code-string">"POST"</span>:
+        input_df = pd.DataFrame([{
+            <span class="code-string">"Medicine Name"</span>: request.form.get(<span class="code-string">"medicine_name"</span>),
+            <span class="code-string">"Medicine Category"</span>: request.form.get(<span class="code-string">"medicine_category"</span>),
+            <span class="code-string">"Current Stock"</span>: int(round(float(request.form.get(<span class="code-string">"current_stock"</span>)))),
+            <span class="code-string">"Previous Consumption"</span>: int(round(float(request.form.get(<span class="code-string">"previous_consumption"</span>)))),
+            <span class="code-string">"Average Daily Usage"</span>: float(request.form.get(<span class="code-string">"average_daily_usage"</span>)),
+            <span class="code-string">"Supplier Delivery Time"</span>: int(round(float(request.form.get(<span class="code-string">"supplier_delivery_time"</span>))))
+        }])
+
+        pred_raw = model_pipeline.predict(input_df)[0]
+        predicted_demand = max(0, int(round(pred_raw)))
+        policy = calculate_inventory_policy(predicted_demand, input_df[<span class="code-string">"Current Stock"</span>][0],
+                                            input_df[<span class="code-string">"Average Daily Usage"</span>][0],
+                                            input_df[<span class="code-string">"Supplier Delivery Time"</span>][0])
+        prediction_result = {<span class="code-string">"predicted_demand"</span>: predicted_demand, <span class="code-string">"policy"</span>: policy}
+
+    <span class="code-keyword">return</span> render_template(<span class="code-string">"index.html"</span>, prediction_result=prediction_result)</div>
+  </div>
+
+  <!-- ==========================================
+       PAGE 6: Output Screenshots (Fig 2 & Fig 3)
+       ========================================== -->
+  <div class="page">
+    <h3 class="section-heading" style="margin-top: 0;">Output (Step-by-Step Screenshots):</h3>
+
+    <div class="figure-box">
+      <img src="file:///C:/Users/KRISHNA/.gemini/antigravity/scratch/MedicineStockPrediction/static/screenshots/fig2_web_interface.png" alt="Fig 2: Web Interface" class="figure-img hero">
+      <div class="figure-caption">Fig 2: Step 1 — Load Interface: Web application dashboard with project overview and dataset summary</div>
+    </div>
+
+    <div class="figure-box" style="margin-top: 10px;">
+      <img src="file:///C:/Users/KRISHNA/.gemini/antigravity/scratch/MedicineStockPrediction/static/plots/demand_distribution.png" alt="Fig 3: Demand Distribution" class="figure-img">
+      <div class="figure-caption">Fig 3: Step 2 — Exploratory Data Analysis: Medicine demand distribution histogram with Kernel Density Estimation</div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       PAGE 7: Output Screenshots (Fig 4 & Fig 5)
+       ========================================== -->
+  <div class="page">
+    <div class="figure-box">
+      <img src="file:///C:/Users/KRISHNA/.gemini/antigravity/scratch/MedicineStockPrediction/static/plots/stock_vs_demand.png" alt="Fig 4: Stock vs Demand" class="figure-img">
+      <div class="figure-caption">Fig 4: Step 2 — Exploratory Data Analysis: Current stock quantity vs. medicine demand categorized by therapeutic class</div>
+    </div>
+
+    <div class="figure-box" style="margin-top: 16px;">
+      <img src="file:///C:/Users/KRISHNA/.gemini/antigravity/scratch/MedicineStockPrediction/static/plots/category_demand.png" alt="Fig 5: Category Demand" class="figure-img">
+      <div class="figure-caption">Fig 5: Step 2 — Exploratory Data Analysis: Average medicine demand comparison across therapeutic categories</div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       PAGE 8: Output Screenshots (Fig 6 & Fig 7)
+       ========================================== -->
+  <div class="page">
+    <div class="figure-box">
+      <img src="file:///C:/Users/KRISHNA/.gemini/antigravity/scratch/MedicineStockPrediction/static/plots/consumption_analysis.png" alt="Fig 6: Consumption Analysis" class="figure-img">
+      <div class="figure-caption">Fig 6: Step 2 — Exploratory Data Analysis: Previous consumption vs. predicted demand with linear regression trendline</div>
+    </div>
+
+    <div class="figure-box" style="margin-top: 16px;">
+      <img src="file:///C:/Users/KRISHNA/.gemini/antigravity/scratch/MedicineStockPrediction/static/plots/delivery_vs_demand.png" alt="Fig 7: Delivery Time vs Demand" class="figure-img">
+      <div class="figure-caption">Fig 7: Step 2 — Exploratory Data Analysis: Supplier delivery time (days) vs. medicine demand distribution box plot</div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       PAGE 9: Output Screenshots (Fig 8 & Fig 9)
+       ========================================== -->
+  <div class="page">
+    <div class="figure-box">
+      <img src="file:///C:/Users/KRISHNA/.gemini/antigravity/scratch/MedicineStockPrediction/static/plots/feature_correlation.png" alt="Fig 8: Feature Correlation Heatmap" class="figure-img">
+      <div class="figure-caption">Fig 8: Step 2 — Exploratory Data Analysis: Pearson correlation matrix across numerical inventory features</div>
+    </div>
+
+    <div class="figure-box" style="margin-top: 16px;">
+      <img src="file:///C:/Users/KRISHNA/.gemini/antigravity/scratch/MedicineStockPrediction/static/plots/actual_vs_predicted.png" alt="Fig 9: Actual vs Predicted Demand" class="figure-img">
+      <div class="figure-caption">Fig 9: Step 3 — Model Evaluation: Actual vs. predicted medicine demand on held-out test data with ideal y = x line</div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       PAGE 10: Output Screenshots (Fig 10 & Fig 11)
+       ========================================== -->
+  <div class="page">
+    <div class="figure-box">
+      <img src="file:///C:/Users/KRISHNA/.gemini/antigravity/scratch/MedicineStockPrediction/static/plots/residual_plot.png" alt="Fig 10: Diagnostic Residual Plot" class="figure-img">
+      <div class="figure-caption">Fig 10: Step 4 — Diagnostic Residual Analysis: Residual plot (Residuals vs. Predicted Demand) verifying zero-centered error</div>
+    </div>
+
+    <div class="figure-box" style="margin-top: 16px;">
+      <img src="file:///C:/Users/KRISHNA/.gemini/antigravity/scratch/MedicineStockPrediction/static/plots/feature_importance.png" alt="Fig 11: Feature Importance" class="figure-img">
+      <div class="figure-caption">Fig 11: Step 4 — Model Feature Impact: Top absolute regression coefficients for standardized predictive features</div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       PAGE 11: Output Screenshots (Fig 12, Fig 13) & Result
+       ========================================== -->
+  <div class="page">
+    <div class="figure-box">
+      <img src="file:///C:/Users/KRISHNA/.gemini/antigravity/scratch/MedicineStockPrediction/static/screenshots/fig10_prediction_low_stock.png" alt="Fig 12: Low Stock Scenario" class="figure-img" style="max-height: 240px;">
+      <div class="figure-caption">Fig 12: Step 5 — Medicine Stock Prediction: Low Stock status with recommended reorder quantity calculation (Paracetamol)</div>
+    </div>
+
+    <div class="figure-box" style="margin-top: 8px;">
+      <img src="file:///C:/Users/KRISHNA/.gemini/antigravity/scratch/MedicineStockPrediction/static/screenshots/fig11_prediction_sufficient_stock.png" alt="Fig 13: Sufficient Stock Scenario" class="figure-img" style="max-height: 240px;">
+      <div class="figure-caption">Fig 13: Step 5 — Medicine Stock Prediction: Sufficient Stock status indicating balanced inventory (Amoxicillin)</div>
+    </div>
+
+    <h3 class="section-heading" style="margin-top: 8px;">Result:</h3>
+    <p style="font-size: 10.5pt; line-height: 1.35; margin-bottom: 0;">
+      A web-based Medicine Stock Prediction system was successfully designed and implemented using a Flask backend, Scikit-learn regression pipelines (Linear Regression and Random Forest Regressor), and an automated inventory replenishment policy. The pharmaceutical inventory dataset (700 records, 6 features) was preprocessed with zero data leakage using a <code>ColumnTransformer</code> pipeline applying <code>StandardScaler</code> to numeric attributes and <code>OneHotEncoder</code> to categorical fields. In 5-fold cross-validation on the training set, Linear Regression achieved superior performance (CV RMSE of 35.15 ± 0.82 units, CV R² of 97.62%) and was selected over Random Forest Regressor (CV RMSE of 40.94 ± 2.24 units). On the 20% held-out test set, the champion model achieved a Mean Absolute Error (MAE) of 28.89 units, a Root Mean Squared Error (RMSE) of 36.24 units, and an R-squared (R²) score of 96.98%. The model is deployed via an interactive Flask web application that generates real-time demand forecasts, calculates safety stock buffers and reorder quantities, and categorizes inventory status into Low Stock, Sufficient Stock, or Overstock for clinical pharmacy decision support.
+    </p>
+  </div>
+
+</body>
+</html>

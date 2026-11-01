@@ -1,0 +1,701 @@
+Medicine Name,Medicine Category,Current Stock,Previous Consumption,Average Daily Usage,Supplier Delivery Time,Predicted Demand
+Ciprofloxacin,Antibiotics,333,346,11.4,8,409
+Zinc Sulfate,Vitamins,342,673,22.5,4,687
+Omeprazole,Gastric Medicine,931,699,23.4,2,802
+Fexofenadine,Allergy Medicine,546,418,11.8,4,419
+Cephalexin,Antibiotics,67,211,7.9,10,302
+Atorvastatin,Cardiovascular,385,760,27.4,2,860
+Ciprofloxacin,Antibiotics,644,408,13.2,10,475
+Vitamin D3,Vitamins,61,364,13.0,2,399
+Salbutamol,Respiratory,251,514,15.8,3,491
+Fexofenadine,Allergy Medicine,245,235,8.5,4,289
+Fexofenadine,Allergy Medicine,305,437,13.1,3,426
+Montelukast,Respiratory,288,207,6.2,3,209
+Atorvastatin,Cardiovascular,424,861,30.7,3,895
+Aspirin,Pain Relief,354,481,13.8,5,471
+Cephalexin,Antibiotics,155,322,11.0,7,339
+Montelukast,Respiratory,267,311,10.9,4,367
+Tramadol,Pain Relief,220,237,8.7,8,277
+Amlodipine,Cardiovascular,415,565,17.7,3,556
+Atorvastatin,Cardiovascular,611,653,20.0,9,756
+Ibuprofen,Pain Relief,373,834,24.3,4,832
+Montelukast,Respiratory,553,424,14.3,8,484
+Metformin,Diabetes Medicine,867,917,28.6,5,1053
+Azithromycin,Antibiotics,349,411,14.3,3,464
+Ibuprofen,Pain Relief,313,727,21.3,3,674
+Atorvastatin,Cardiovascular,1103,899,27.9,5,921
+Paracetamol,Pain Relief,294,432,12.2,3,433
+Metformin,Diabetes Medicine,1413,794,29.3,8,1017
+Amlodipine,Cardiovascular,339,748,23.6,2,728
+Metformin,Diabetes Medicine,408,775,26.6,5,871
+Ranitidine,Gastric Medicine,374,369,12.6,3,348
+Loratadine,Allergy Medicine,548,445,14.0,3,474
+Pantoprazole,Gastric Medicine,243,416,15.9,6,540
+Omeprazole,Gastric Medicine,237,536,16.6,2,551
+Omeprazole,Gastric Medicine,137,674,24.2,3,783
+Vitamin D3,Vitamins,679,491,17.5,7,491
+Metformin,Diabetes Medicine,564,1357,38.9,5,1361
+Salbutamol,Respiratory,139,347,9.8,8,322
+Zinc Sulfate,Vitamins,775,534,19.8,6,590
+Tramadol,Pain Relief,97,493,14.4,2,508
+Amoxicillin,Antibiotics,638,852,26.8,5,904
+Vitamin D3,Vitamins,619,468,16.4,6,565
+Ciprofloxacin,Antibiotics,309,242,9.3,6,291
+Atorvastatin,Cardiovascular,1029,902,26.6,5,834
+Cetirizine,Allergy Medicine,551,623,22.7,8,706
+Ciprofloxacin,Antibiotics,398,427,16.5,11,506
+Vitamin C,Vitamins,912,1271,38.4,2,1286
+Aspirin,Pain Relief,633,444,15.9,1,445
+Insulin Glargine,Diabetes Medicine,46,392,11.1,14,381
+Vitamin C,Vitamins,395,561,17.2,4,602
+Cetirizine,Allergy Medicine,915,735,23.0,3,774
+Atorvastatin,Cardiovascular,942,551,19.8,4,660
+Ibuprofen,Pain Relief,345,448,13.4,5,448
+Zinc Sulfate,Vitamins,243,419,15.6,8,487
+Omeprazole,Gastric Medicine,1254,883,33.5,3,1031
+Ciprofloxacin,Antibiotics,503,408,12.5,14,478
+Metformin,Diabetes Medicine,346,763,22.9,5,784
+Cephalexin,Antibiotics,64,436,14.0,8,503
+Omeprazole,Gastric Medicine,618,717,25.0,2,686
+Tramadol,Pain Relief,316,278,10.8,3,310
+Insulin Glargine,Diabetes Medicine,227,295,8.2,7,325
+Ranitidine,Gastric Medicine,466,439,12.4,6,383
+Aspirin,Pain Relief,604,685,19.8,6,655
+Vitamin C,Vitamins,1153,1167,38.2,2,1190
+Cephalexin,Antibiotics,42,215,8.2,6,221
+Aspirin,Pain Relief,425,635,18.4,2,559
+Ibuprofen,Pain Relief,188,429,13.4,3,422
+Azithromycin,Antibiotics,296,393,12.5,5,427
+Amlodipine,Cardiovascular,655,537,16.3,6,548
+Loratadine,Allergy Medicine,261,504,15.2,2,455
+Aspirin,Pain Relief,536,586,16.4,3,567
+Amlodipine,Cardiovascular,117,530,19.2,2,584
+Vitamin C,Vitamins,1383,971,29.3,4,1042
+Metformin,Diabetes Medicine,830,1210,34.6,5,1188
+Ibuprofen,Pain Relief,740,647,19.6,5,695
+Loratadine,Allergy Medicine,449,480,16.4,5,504
+Aspirin,Pain Relief,210,574,16.1,3,573
+Insulin Glargine,Diabetes Medicine,171,189,5.9,4,220
+Pantoprazole,Gastric Medicine,310,700,20.6,4,726
+Omeprazole,Gastric Medicine,166,804,27.9,2,945
+Cephalexin,Antibiotics,184,457,13.2,6,476
+Insulin Glargine,Diabetes Medicine,333,270,7.8,10,267
+Salbutamol,Respiratory,898,596,18.4,6,643
+Cephalexin,Antibiotics,398,566,16.3,9,504
+Atorvastatin,Cardiovascular,238,466,15.7,5,511
+Pantoprazole,Gastric Medicine,301,525,17.8,4,583
+Glimepiride,Diabetes Medicine,131,280,9.0,6,328
+Vitamin C,Vitamins,746,765,25.0,3,820
+Omeprazole,Gastric Medicine,221,518,15.7,3,524
+Atorvastatin,Cardiovascular,485,629,20.0,6,740
+Montelukast,Respiratory,184,452,13.0,7,491
+Glimepiride,Diabetes Medicine,303,557,21.0,6,621
+Cetirizine,Allergy Medicine,470,618,19.4,3,586
+Omeprazole,Gastric Medicine,619,594,19.8,5,645
+Glimepiride,Diabetes Medicine,215,378,14.3,4,397
+Paracetamol,Pain Relief,659,673,21.6,5,783
+Ciprofloxacin,Antibiotics,286,663,20.0,6,670
+Cetirizine,Allergy Medicine,825,546,16.8,5,622
+Montelukast,Respiratory,383,384,12.4,4,386
+Paracetamol,Pain Relief,273,559,19.1,3,630
+Metformin,Diabetes Medicine,644,649,21.0,7,743
+Cephalexin,Antibiotics,414,387,13.5,3,413
+Montelukast,Respiratory,284,427,12.5,7,414
+Fexofenadine,Allergy Medicine,294,367,12.2,4,400
+Vitamin D3,Vitamins,1159,653,24.1,4,813
+Ranitidine,Gastric Medicine,267,305,11.4,4,395
+Cephalexin,Antibiotics,245,434,15.1,7,511
+Tramadol,Pain Relief,13,224,8.7,5,259
+Tramadol,Pain Relief,167,301,11.3,6,383
+Paracetamol,Pain Relief,572,682,20.2,7,633
+Amoxicillin,Antibiotics,643,853,26.5,5,867
+Loratadine,Allergy Medicine,81,351,13.3,3,428
+Ciprofloxacin,Antibiotics,528,515,18.0,6,550
+Cetirizine,Allergy Medicine,574,782,24.4,3,836
+Ciprofloxacin,Antibiotics,798,537,20.7,11,661
+Cetirizine,Allergy Medicine,418,1027,29.0,2,997
+Cephalexin,Antibiotics,352,491,14.4,11,532
+Metformin,Diabetes Medicine,1077,968,28.2,7,982
+Ibuprofen,Pain Relief,295,604,19.9,1,638
+Paracetamol,Pain Relief,771,876,26.4,3,845
+Pantoprazole,Gastric Medicine,264,430,15.9,8,460
+Salbutamol,Respiratory,273,359,10.6,5,397
+Salbutamol,Respiratory,315,662,20.3,6,734
+Montelukast,Respiratory,125,127,4.7,4,135
+Amoxicillin,Antibiotics,725,998,31.0,5,1007
+Tramadol,Pain Relief,221,295,10.3,8,323
+Metformin,Diabetes Medicine,776,789,25.7,6,786
+Cephalexin,Antibiotics,348,331,11.7,6,340
+Amlodipine,Cardiovascular,287,494,18.9,4,594
+Tramadol,Pain Relief,91,219,6.6,8,204
+Paracetamol,Pain Relief,854,619,22.0,4,723
+Tramadol,Pain Relief,198,249,8.2,8,279
+Amoxicillin,Antibiotics,327,676,22.3,3,726
+Omeprazole,Gastric Medicine,100,569,16.4,7,564
+Insulin Glargine,Diabetes Medicine,349,329,10.7,9,404
+Tramadol,Pain Relief,559,364,11.7,7,357
+Paracetamol,Pain Relief,533,774,22.2,3,822
+Amoxicillin,Antibiotics,139,758,23.3,5,814
+Salbutamol,Respiratory,499,585,16.8,6,572
+Insulin Glargine,Diabetes Medicine,20,147,4.8,7,185
+Ciprofloxacin,Antibiotics,384,420,13.0,9,485
+Cetirizine,Allergy Medicine,123,780,23.8,3,757
+Omeprazole,Gastric Medicine,124,863,24.9,7,874
+Omeprazole,Gastric Medicine,88,447,12.5,2,427
+Loratadine,Allergy Medicine,720,528,15.3,5,566
+Glimepiride,Diabetes Medicine,97,459,17.2,4,548
+Vitamin D3,Vitamins,482,349,12.2,3,405
+Ciprofloxacin,Antibiotics,408,464,13.7,6,478
+Ranitidine,Gastric Medicine,457,506,14.8,6,502
+Zinc Sulfate,Vitamins,365,729,23.0,4,756
+Aspirin,Pain Relief,226,493,15.5,4,425
+Amoxicillin,Antibiotics,288,710,19.9,5,675
+Salbutamol,Respiratory,317,455,13.4,6,441
+Ciprofloxacin,Antibiotics,558,457,13.9,6,457
+Glimepiride,Diabetes Medicine,434,615,18.0,3,602
+Omeprazole,Gastric Medicine,529,685,22.6,2,753
+Fexofenadine,Allergy Medicine,258,345,10.6,4,385
+Aspirin,Pain Relief,83,455,13.0,2,359
+Glimepiride,Diabetes Medicine,329,395,12.9,3,408
+Ciprofloxacin,Antibiotics,385,465,15.5,11,552
+Vitamin D3,Vitamins,855,730,22.3,4,664
+Amlodipine,Cardiovascular,388,712,24.5,2,758
+Ibuprofen,Pain Relief,550,639,23.0,6,687
+Loratadine,Allergy Medicine,323,372,13.7,2,402
+Glimepiride,Diabetes Medicine,382,550,15.8,8,534
+Atorvastatin,Cardiovascular,165,789,26.2,3,774
+Azithromycin,Antibiotics,476,588,18.6,7,613
+Metformin,Diabetes Medicine,751,765,25.1,8,777
+Metformin,Diabetes Medicine,487,1159,33.4,7,1195
+Zinc Sulfate,Vitamins,71,549,17.9,9,669
+Fexofenadine,Allergy Medicine,281,366,10.5,4,361
+Salbutamol,Respiratory,645,381,13.3,6,435
+Ciprofloxacin,Antibiotics,396,426,16.6,11,531
+Paracetamol,Pain Relief,350,637,23.9,5,723
+Paracetamol,Pain Relief,585,823,25.0,2,761
+Zinc Sulfate,Vitamins,479,580,20.1,6,610
+Glimepiride,Diabetes Medicine,287,553,18.3,4,631
+Cetirizine,Allergy Medicine,190,667,24.7,4,779
+Tramadol,Pain Relief,137,284,10.0,4,314
+Ciprofloxacin,Antibiotics,225,340,9.9,9,366
+Azithromycin,Antibiotics,572,493,19.3,9,616
+Cephalexin,Antibiotics,369,361,12.0,5,390
+Cetirizine,Allergy Medicine,500,591,21.3,5,689
+Amoxicillin,Antibiotics,284,574,17.8,5,544
+Paracetamol,Pain Relief,289,552,19.5,2,585
+Vitamin D3,Vitamins,499,708,22.3,1,798
+Loratadine,Allergy Medicine,437,423,14.7,6,461
+Metformin,Diabetes Medicine,452,834,28.6,2,927
+Montelukast,Respiratory,232,418,13.8,4,440
+Omeprazole,Gastric Medicine,365,858,24.1,2,758
+Amlodipine,Cardiovascular,204,499,14.8,4,493
+Montelukast,Respiratory,75,347,11.4,4,357
+Cetirizine,Allergy Medicine,128,686,19.3,4,634
+Zinc Sulfate,Vitamins,75,226,8.7,3,275
+Ranitidine,Gastric Medicine,356,523,14.7,8,548
+Ranitidine,Gastric Medicine,342,511,14.6,9,535
+Zinc Sulfate,Vitamins,84,420,12.5,2,382
+Metformin,Diabetes Medicine,496,586,20.3,5,665
+Ciprofloxacin,Antibiotics,170,356,12.0,10,429
+Ibuprofen,Pain Relief,545,659,23.5,3,701
+Tramadol,Pain Relief,396,273,9.6,8,309
+Ranitidine,Gastric Medicine,53,279,8.8,4,265
+Amoxicillin,Antibiotics,964,757,25.4,7,836
+Ranitidine,Gastric Medicine,52,391,15.0,5,512
+Montelukast,Respiratory,235,489,14.2,6,467
+Ranitidine,Gastric Medicine,186,435,13.2,5,467
+Ranitidine,Gastric Medicine,402,338,10.1,4,363
+Ibuprofen,Pain Relief,317,695,21.2,6,781
+Ibuprofen,Pain Relief,622,699,21.1,5,670
+Amlodipine,Cardiovascular,299,418,12.7,4,430
+Salbutamol,Respiratory,264,573,16.9,5,578
+Amoxicillin,Antibiotics,579,606,18.9,4,537
+Paracetamol,Pain Relief,153,781,27.2,5,880
+Paracetamol,Pain Relief,472,493,18.9,6,621
+Vitamin D3,Vitamins,275,477,16.8,4,540
+Ibuprofen,Pain Relief,147,318,10.7,4,354
+Atorvastatin,Cardiovascular,622,658,25.0,4,767
+Metformin,Diabetes Medicine,478,1086,33.0,7,1221
+Azithromycin,Antibiotics,408,475,17.2,5,562
+Salbutamol,Respiratory,475,550,20.0,4,588
+Aspirin,Pain Relief,398,469,15.6,4,502
+Salbutamol,Respiratory,217,392,14.2,4,459
+Fexofenadine,Allergy Medicine,176,328,10.3,8,378
+Montelukast,Respiratory,241,294,10.0,9,311
+Ranitidine,Gastric Medicine,419,540,17.9,5,581
+Azithromycin,Antibiotics,107,463,14.3,3,452
+Montelukast,Respiratory,277,439,12.9,5,432
+Amoxicillin,Antibiotics,373,698,24.3,8,789
+Zinc Sulfate,Vitamins,521,590,17.1,7,544
+Ibuprofen,Pain Relief,302,500,18.4,2,590
+Azithromycin,Antibiotics,163,309,11.6,5,383
+Amlodipine,Cardiovascular,591,696,23.3,5,750
+Fexofenadine,Allergy Medicine,205,410,13.2,3,387
+Pantoprazole,Gastric Medicine,746,691,25.0,3,765
+Pantoprazole,Gastric Medicine,496,510,15.9,3,546
+Paracetamol,Pain Relief,611,716,24.7,5,757
+Cetirizine,Allergy Medicine,715,629,18.0,2,599
+Azithromycin,Antibiotics,242,439,16.7,7,521
+Pantoprazole,Gastric Medicine,268,550,18.1,4,570
+Tramadol,Pain Relief,349,353,11.3,8,378
+Zinc Sulfate,Vitamins,441,523,19.0,10,620
+Aspirin,Pain Relief,57,316,11.4,4,392
+Vitamin D3,Vitamins,267,558,17.2,7,536
+Tramadol,Pain Relief,108,214,6.6,6,225
+Vitamin D3,Vitamins,311,324,12.5,10,451
+Zinc Sulfate,Vitamins,490,446,16.6,2,532
+Ciprofloxacin,Antibiotics,316,279,10.0,5,362
+Zinc Sulfate,Vitamins,714,566,17.9,7,655
+Cetirizine,Allergy Medicine,277,299,10.8,7,364
+Paracetamol,Pain Relief,859,1175,35.8,3,1196
+Cephalexin,Antibiotics,314,294,9.7,4,347
+Ciprofloxacin,Antibiotics,112,327,11.0,8,366
+Vitamin C,Vitamins,763,869,25.0,6,919
+Cephalexin,Antibiotics,616,389,12.8,4,432
+Paracetamol,Pain Relief,494,549,20.9,2,592
+Fexofenadine,Allergy Medicine,97,234,6.9,4,215
+Vitamin C,Vitamins,1188,865,31.2,3,979
+Salbutamol,Respiratory,93,464,14.7,5,497
+Loratadine,Allergy Medicine,291,321,12.3,8,392
+Tramadol,Pain Relief,81,420,13.7,8,471
+Ciprofloxacin,Antibiotics,271,582,19.0,7,585
+Pantoprazole,Gastric Medicine,124,652,18.5,6,648
+Pantoprazole,Gastric Medicine,356,634,23.2,5,791
+Zinc Sulfate,Vitamins,230,482,16.5,4,504
+Ranitidine,Gastric Medicine,318,380,12.5,5,377
+Ibuprofen,Pain Relief,80,594,18.6,4,635
+Paracetamol,Pain Relief,563,647,23.8,1,740
+Pantoprazole,Gastric Medicine,508,507,17.2,6,565
+Metformin,Diabetes Medicine,760,841,32.1,2,960
+Amoxicillin,Antibiotics,1174,690,24.4,9,762
+Amoxicillin,Antibiotics,636,865,27.0,4,913
+Salbutamol,Respiratory,876,479,18.3,4,533
+Cetirizine,Allergy Medicine,130,609,20.0,8,642
+Cetirizine,Allergy Medicine,358,841,24.1,5,815
+Tramadol,Pain Relief,143,252,9.4,7,307
+Vitamin D3,Vitamins,716,788,24.3,8,879
+Pantoprazole,Gastric Medicine,410,510,16.8,4,540
+Pantoprazole,Gastric Medicine,115,635,22.2,8,733
+Tramadol,Pain Relief,134,303,9.5,7,322
+Zinc Sulfate,Vitamins,388,510,16.7,6,535
+Montelukast,Respiratory,200,410,13.2,3,429
+Amlodipine,Cardiovascular,108,526,17.6,4,511
+Montelukast,Respiratory,251,514,15.0,5,504
+Paracetamol,Pain Relief,568,661,24.1,3,707
+Montelukast,Respiratory,465,411,14.7,12,525
+Zinc Sulfate,Vitamins,426,558,17.9,7,547
+Fexofenadine,Allergy Medicine,613,332,12.8,2,411
+Ranitidine,Gastric Medicine,383,567,16.7,6,570
+Cephalexin,Antibiotics,307,460,13.0,5,429
+Aspirin,Pain Relief,102,430,16.3,2,489
+Azithromycin,Antibiotics,249,481,17.2,4,496
+Cephalexin,Antibiotics,230,181,7.0,2,206
+Zinc Sulfate,Vitamins,361,448,15.1,7,518
+Tramadol,Pain Relief,140,243,8.7,7,296
+Pantoprazole,Gastric Medicine,441,543,18.0,4,556
+Tramadol,Pain Relief,125,264,9.0,4,307
+Vitamin C,Vitamins,352,635,22.5,5,751
+Insulin Glargine,Diabetes Medicine,416,225,8.3,7,302
+Vitamin C,Vitamins,908,1181,37.4,5,1274
+Ibuprofen,Pain Relief,659,680,21.7,2,616
+Amlodipine,Cardiovascular,90,543,16.2,3,564
+Tramadol,Pain Relief,352,448,13.7,7,491
+Pantoprazole,Gastric Medicine,390,564,16.4,3,548
+Cetirizine,Allergy Medicine,763,478,15.3,3,455
+Aspirin,Pain Relief,84,569,18.1,2,638
+Paracetamol,Pain Relief,741,630,19.1,7,638
+Aspirin,Pain Relief,353,360,11.2,2,340
+Paracetamol,Pain Relief,600,535,20.2,5,651
+Insulin Glargine,Diabetes Medicine,302,330,11.7,7,346
+Atorvastatin,Cardiovascular,1019,614,21.3,2,675
+Pantoprazole,Gastric Medicine,630,769,21.4,6,749
+Zinc Sulfate,Vitamins,252,584,17.8,8,624
+Montelukast,Respiratory,297,356,12.9,4,375
+Cephalexin,Antibiotics,286,390,12.5,4,404
+Ciprofloxacin,Antibiotics,402,342,10.7,11,410
+Tramadol,Pain Relief,188,397,13.1,6,399
+Ranitidine,Gastric Medicine,242,188,6.9,6,203
+Paracetamol,Pain Relief,852,941,36.0,6,1129
+Pantoprazole,Gastric Medicine,130,437,16.3,4,564
+Metformin,Diabetes Medicine,263,563,16.6,5,518
+Vitamin D3,Vitamins,357,451,14.2,6,505
+Amlodipine,Cardiovascular,474,531,19.8,5,639
+Salbutamol,Respiratory,482,534,16.4,6,537
+Amlodipine,Cardiovascular,352,357,13.7,4,398
+Insulin Glargine,Diabetes Medicine,256,310,9.8,13,362
+Azithromycin,Antibiotics,259,485,18.4,4,531
+Azithromycin,Antibiotics,69,220,7.2,5,285
+Glimepiride,Diabetes Medicine,253,437,16.8,2,505
+Vitamin D3,Vitamins,118,694,19.6,4,611
+Amlodipine,Cardiovascular,124,548,20.3,3,627
+Cephalexin,Antibiotics,273,512,16.7,3,528
+Ibuprofen,Pain Relief,179,331,12.5,7,401
+Atorvastatin,Cardiovascular,654,725,21.2,5,688
+Paracetamol,Pain Relief,194,1073,31.6,3,984
+Omeprazole,Gastric Medicine,199,922,29.8,4,941
+Paracetamol,Pain Relief,342,473,14.9,3,499
+Amoxicillin,Antibiotics,553,466,18.1,6,598
+Pantoprazole,Gastric Medicine,452,574,19.2,4,604
+Vitamin D3,Vitamins,482,533,19.5,4,579
+Aspirin,Pain Relief,274,575,18.1,6,556
+Tramadol,Pain Relief,93,241,7.7,5,245
+Ranitidine,Gastric Medicine,242,423,16.5,5,592
+Ranitidine,Gastric Medicine,128,286,8.8,7,291
+Metformin,Diabetes Medicine,1949,1137,40.6,5,1326
+Insulin Glargine,Diabetes Medicine,175,330,9.8,10,344
+Atorvastatin,Cardiovascular,963,581,20.5,8,654
+Azithromycin,Antibiotics,223,471,15.4,5,527
+Tramadol,Pain Relief,314,299,10.3,5,374
+Cetirizine,Allergy Medicine,448,484,14.5,5,484
+Amoxicillin,Antibiotics,522,566,21.7,6,652
+Montelukast,Respiratory,647,535,16.8,9,575
+Ranitidine,Gastric Medicine,201,424,13.2,5,409
+Insulin Glargine,Diabetes Medicine,405,304,8.5,9,309
+Atorvastatin,Cardiovascular,253,452,15.1,6,481
+Tramadol,Pain Relief,236,327,10.3,6,329
+Paracetamol,Pain Relief,383,910,25.8,3,865
+Zinc Sulfate,Vitamins,139,533,20.0,3,591
+Atorvastatin,Cardiovascular,969,1005,32.6,3,1036
+Salbutamol,Respiratory,265,610,17.0,7,565
+Paracetamol,Pain Relief,447,534,19.1,2,534
+Tramadol,Pain Relief,94,253,7.3,6,213
+Vitamin C,Vitamins,1077,885,27.5,2,835
+Loratadine,Allergy Medicine,430,474,18.0,6,554
+Amlodipine,Cardiovascular,209,456,15.4,4,505
+Tramadol,Pain Relief,277,381,11.8,4,362
+Cephalexin,Antibiotics,200,364,13.5,7,414
+Insulin Glargine,Diabetes Medicine,250,364,10.7,6,361
+Montelukast,Respiratory,145,298,10.4,8,315
+Vitamin C,Vitamins,1054,1154,35.3,1,1142
+Omeprazole,Gastric Medicine,104,548,20.8,2,678
+Amlodipine,Cardiovascular,879,485,18.1,3,549
+Salbutamol,Respiratory,510,513,16.5,5,542
+Ibuprofen,Pain Relief,284,494,19.0,6,611
+Loratadine,Allergy Medicine,482,510,16.2,9,580
+Ibuprofen,Pain Relief,648,581,22.3,7,692
+Ranitidine,Gastric Medicine,330,353,12.7,9,408
+Cephalexin,Antibiotics,208,305,8.9,9,316
+Paracetamol,Pain Relief,500,484,15.9,4,539
+Cetirizine,Allergy Medicine,215,392,14.4,4,452
+Fexofenadine,Allergy Medicine,373,361,12.0,6,373
+Amlodipine,Cardiovascular,268,349,11.1,3,365
+Pantoprazole,Gastric Medicine,692,756,23.6,6,742
+Ciprofloxacin,Antibiotics,38,373,11.5,9,422
+Loratadine,Allergy Medicine,207,469,14.1,5,456
+Salbutamol,Respiratory,392,415,15.6,6,472
+Tramadol,Pain Relief,132,269,8.9,5,298
+Vitamin C,Vitamins,543,1006,35.3,5,1153
+Montelukast,Respiratory,374,224,7.7,5,229
+Glimepiride,Diabetes Medicine,620,510,15.6,6,541
+Ciprofloxacin,Antibiotics,296,354,12.8,8,380
+Aspirin,Pain Relief,120,227,8.4,3,289
+Glimepiride,Diabetes Medicine,576,672,19.3,4,607
+Zinc Sulfate,Vitamins,556,545,18.6,7,602
+Paracetamol,Pain Relief,748,702,19.6,8,676
+Cephalexin,Antibiotics,129,293,9.9,5,310
+Insulin Glargine,Diabetes Medicine,232,247,7.8,9,274
+Pantoprazole,Gastric Medicine,277,687,19.2,9,687
+Insulin Glargine,Diabetes Medicine,162,304,11.0,9,359
+Metformin,Diabetes Medicine,900,719,23.6,3,804
+Vitamin D3,Vitamins,793,953,26.6,2,843
+Salbutamol,Respiratory,361,386,12.1,4,414
+Omeprazole,Gastric Medicine,164,397,11.4,7,430
+Ibuprofen,Pain Relief,336,390,13.7,4,364
+Ibuprofen,Pain Relief,467,450,15.7,6,551
+Salbutamol,Respiratory,432,462,18.0,8,613
+Amlodipine,Cardiovascular,277,656,20.0,6,680
+Vitamin D3,Vitamins,422,535,17.5,6,611
+Amlodipine,Cardiovascular,586,667,19.3,4,628
+Amlodipine,Cardiovascular,201,454,15.3,5,487
+Ranitidine,Gastric Medicine,161,326,9.8,2,307
+Zinc Sulfate,Vitamins,245,274,9.5,5,329
+Loratadine,Allergy Medicine,435,387,14.8,5,453
+Azithromycin,Antibiotics,339,526,14.8,3,477
+Omeprazole,Gastric Medicine,955,599,20.1,4,685
+Amlodipine,Cardiovascular,665,579,22.1,3,663
+Fexofenadine,Allergy Medicine,216,217,8.3,2,263
+Amoxicillin,Antibiotics,782,737,25.7,7,795
+Paracetamol,Pain Relief,679,775,27.3,5,842
+Cephalexin,Antibiotics,466,323,11.8,5,361
+Atorvastatin,Cardiovascular,640,883,26.3,6,804
+Metformin,Diabetes Medicine,846,884,29.4,4,915
+Metformin,Diabetes Medicine,206,1146,33.5,3,1049
+Amoxicillin,Antibiotics,442,561,19.0,7,659
+Ciprofloxacin,Antibiotics,795,586,16.4,7,603
+Aspirin,Pain Relief,367,434,14.8,4,483
+Azithromycin,Antibiotics,224,443,16.9,8,506
+Glimepiride,Diabetes Medicine,454,489,15.4,5,513
+Zinc Sulfate,Vitamins,522,501,18.2,5,583
+Omeprazole,Gastric Medicine,201,352,13.3,4,428
+Tramadol,Pain Relief,388,370,12.8,4,444
+Salbutamol,Respiratory,517,580,17.8,4,552
+Cephalexin,Antibiotics,329,413,12.9,7,399
+Zinc Sulfate,Vitamins,109,597,18.1,5,676
+Pantoprazole,Gastric Medicine,533,637,22.8,5,698
+Glimepiride,Diabetes Medicine,314,330,10.5,5,381
+Vitamin C,Vitamins,149,610,22.2,2,658
+Loratadine,Allergy Medicine,70,348,12.9,3,429
+Vitamin D3,Vitamins,659,889,27.2,3,968
+Ranitidine,Gastric Medicine,414,492,13.7,7,507
+Montelukast,Respiratory,76,480,16.0,9,524
+Vitamin D3,Vitamins,315,728,22.0,3,766
+Salbutamol,Respiratory,703,550,18.5,3,550
+Amoxicillin,Antibiotics,264,581,17.9,8,638
+Atorvastatin,Cardiovascular,112,559,19.2,7,586
+Salbutamol,Respiratory,297,441,12.5,7,425
+Cetirizine,Allergy Medicine,482,681,20.0,6,656
+Metformin,Diabetes Medicine,718,794,23.9,7,803
+Atorvastatin,Cardiovascular,327,653,21.8,7,734
+Paracetamol,Pain Relief,728,892,31.6,5,971
+Paracetamol,Pain Relief,513,1095,34.6,3,1204
+Omeprazole,Gastric Medicine,353,725,23.3,3,726
+Ibuprofen,Pain Relief,745,417,15.3,6,517
+Amlodipine,Cardiovascular,376,325,12.2,4,408
+Pantoprazole,Gastric Medicine,222,560,15.6,5,501
+Cephalexin,Antibiotics,30,222,8.7,6,285
+Glimepiride,Diabetes Medicine,679,511,17.2,7,591
+Atorvastatin,Cardiovascular,192,883,26.0,4,908
+Paracetamol,Pain Relief,601,889,25.2,3,818
+Pantoprazole,Gastric Medicine,319,686,21.0,5,672
+Ciprofloxacin,Antibiotics,347,370,14.1,9,464
+Amoxicillin,Antibiotics,262,620,18.0,3,613
+Amlodipine,Cardiovascular,927,671,24.0,5,775
+Salbutamol,Respiratory,186,337,12.4,9,430
+Tramadol,Pain Relief,190,435,12.7,7,390
+Metformin,Diabetes Medicine,404,752,24.8,2,794
+Pantoprazole,Gastric Medicine,698,686,23.3,5,714
+Vitamin D3,Vitamins,675,500,17.2,4,529
+Amoxicillin,Antibiotics,122,613,17.5,3,562
+Amlodipine,Cardiovascular,555,568,18.2,5,609
+Insulin Glargine,Diabetes Medicine,37,211,7.4,5,237
+Amoxicillin,Antibiotics,963,845,24.9,3,829
+Omeprazole,Gastric Medicine,214,1286,36.3,3,1129
+Ranitidine,Gastric Medicine,212,487,14.2,3,430
+Insulin Glargine,Diabetes Medicine,50,271,7.9,8,285
+Zinc Sulfate,Vitamins,303,555,20.6,7,624
+Amoxicillin,Antibiotics,299,643,18.3,4,604
+Metformin,Diabetes Medicine,345,643,24.0,5,791
+Pantoprazole,Gastric Medicine,815,493,16.8,3,581
+Pantoprazole,Gastric Medicine,485,435,12.4,6,427
+Atorvastatin,Cardiovascular,411,709,26.0,5,773
+Ciprofloxacin,Antibiotics,350,234,7.3,6,287
+Aspirin,Pain Relief,327,451,14.0,3,438
+Paracetamol,Pain Relief,455,859,29.3,6,948
+Amoxicillin,Antibiotics,662,589,21.8,7,676
+Salbutamol,Respiratory,488,646,21.1,8,699
+Loratadine,Allergy Medicine,350,454,14.4,3,455
+Amlodipine,Cardiovascular,113,498,18.1,4,602
+Amoxicillin,Antibiotics,609,706,25.9,4,828
+Aspirin,Pain Relief,460,502,19.1,5,636
+Ibuprofen,Pain Relief,444,552,18.2,5,555
+Zinc Sulfate,Vitamins,136,569,20.9,7,743
+Loratadine,Allergy Medicine,366,457,14.7,2,506
+Vitamin D3,Vitamins,587,586,20.6,4,645
+Paracetamol,Pain Relief,1081,953,27.4,3,882
+Montelukast,Respiratory,73,241,6.8,4,223
+Amoxicillin,Antibiotics,557,796,22.2,3,708
+Glimepiride,Diabetes Medicine,33,327,9.9,7,312
+Aspirin,Pain Relief,472,649,18.2,2,649
+Pantoprazole,Gastric Medicine,309,542,19.7,3,641
+Montelukast,Respiratory,541,368,14.1,9,465
+Pantoprazole,Gastric Medicine,254,437,16.3,4,498
+Salbutamol,Respiratory,320,697,21.9,5,674
+Ibuprofen,Pain Relief,101,422,15.3,3,523
+Ranitidine,Gastric Medicine,226,370,14.2,9,431
+Zinc Sulfate,Vitamins,584,498,19.0,4,637
+Montelukast,Respiratory,67,491,14.1,7,471
+Metformin,Diabetes Medicine,830,847,28.1,4,857
+Vitamin C,Vitamins,730,683,24.9,3,758
+Tramadol,Pain Relief,42,185,5.9,1,182
+Paracetamol,Pain Relief,707,1067,30.7,4,1018
+Paracetamol,Pain Relief,496,943,32.9,5,1076
+Vitamin D3,Vitamins,304,404,11.9,3,435
+Fexofenadine,Allergy Medicine,47,335,10.0,2,328
+Amoxicillin,Antibiotics,918,817,30.6,5,1031
+Metformin,Diabetes Medicine,1201,928,31.1,5,1002
+Tramadol,Pain Relief,466,359,11.7,8,372
+Paracetamol,Pain Relief,295,637,21.3,3,694
+Paracetamol,Pain Relief,169,920,27.5,3,865
+Cephalexin,Antibiotics,425,364,13.9,6,420
+Loratadine,Allergy Medicine,266,296,9.5,3,350
+Fexofenadine,Allergy Medicine,200,389,12.0,6,430
+Metformin,Diabetes Medicine,1220,1413,40.4,3,1411
+Glimepiride,Diabetes Medicine,461,433,14.4,4,403
+Metformin,Diabetes Medicine,572,854,24.0,6,894
+Insulin Glargine,Diabetes Medicine,46,245,7.1,9,293
+Ibuprofen,Pain Relief,531,380,14.0,6,416
+Vitamin D3,Vitamins,321,624,20.8,5,589
+Vitamin C,Vitamins,517,1206,34.1,6,1153
+Tramadol,Pain Relief,105,292,9.4,2,291
+Salbutamol,Respiratory,453,415,14.3,4,447
+Ranitidine,Gastric Medicine,160,409,11.6,9,472
+Cephalexin,Antibiotics,568,425,12.1,5,434
+Loratadine,Allergy Medicine,392,302,10.0,3,294
+Ibuprofen,Pain Relief,513,633,22.3,6,675
+Vitamin D3,Vitamins,655,546,17.3,5,533
+Cetirizine,Allergy Medicine,661,557,16.6,3,576
+Ciprofloxacin,Antibiotics,134,282,10.4,9,318
+Aspirin,Pain Relief,457,435,15.4,2,459
+Atorvastatin,Cardiovascular,316,726,20.3,3,688
+Vitamin C,Vitamins,826,897,34.5,4,1115
+Glimepiride,Diabetes Medicine,735,566,19.6,3,641
+Fexofenadine,Allergy Medicine,186,211,6.2,4,200
+Montelukast,Respiratory,345,288,11.2,4,319
+Aspirin,Pain Relief,460,476,15.3,5,482
+Atorvastatin,Cardiovascular,828,924,33.5,3,1095
+Aspirin,Pain Relief,212,547,15.5,5,478
+Loratadine,Allergy Medicine,212,479,13.6,6,465
+Amoxicillin,Antibiotics,716,638,25.0,3,733
+Cetirizine,Allergy Medicine,213,481,13.9,2,510
+Montelukast,Respiratory,316,301,11.6,6,355
+Tramadol,Pain Relief,364,350,11.6,8,391
+Ranitidine,Gastric Medicine,399,395,12.9,7,457
+Tramadol,Pain Relief,177,202,7.8,4,245
+Pantoprazole,Gastric Medicine,115,721,22.4,7,750
+Aspirin,Pain Relief,289,478,18.1,4,523
+Vitamin C,Vitamins,192,837,32.7,4,933
+Ranitidine,Gastric Medicine,376,361,12.1,8,381
+Ciprofloxacin,Antibiotics,414,513,17.2,6,580
+Montelukast,Respiratory,264,289,8.7,6,303
+Salbutamol,Respiratory,327,398,13.2,8,457
+Amoxicillin,Antibiotics,938,736,24.7,4,750
+Metformin,Diabetes Medicine,820,1008,34.2,6,1089
+Ranitidine,Gastric Medicine,300,393,11.7,6,309
+Salbutamol,Respiratory,668,446,16.6,7,496
+Glimepiride,Diabetes Medicine,247,298,10.1,4,308
+Salbutamol,Respiratory,665,596,17.0,8,586
+Tramadol,Pain Relief,241,247,9.5,10,303
+Cetirizine,Allergy Medicine,134,758,21.6,4,658
+Ranitidine,Gastric Medicine,532,505,17.9,3,502
+Ranitidine,Gastric Medicine,522,432,13.4,2,418
+Zinc Sulfate,Vitamins,380,503,15.8,3,488
+Pantoprazole,Gastric Medicine,515,738,21.5,3,626
+Amlodipine,Cardiovascular,698,583,18.1,3,632
+Glimepiride,Diabetes Medicine,265,255,8.7,3,244
+Vitamin D3,Vitamins,450,1013,30.8,2,1016
+Ranitidine,Gastric Medicine,209,506,14.3,4,507
+Aspirin,Pain Relief,393,451,15.2,4,520
+Metformin,Diabetes Medicine,1020,805,26.2,6,931
+Cetirizine,Allergy Medicine,422,358,10.4,5,352
+Vitamin D3,Vitamins,364,395,15.0,4,440
+Metformin,Diabetes Medicine,711,972,29.7,4,1031
+Cetirizine,Allergy Medicine,78,319,12.2,4,357
+Ciprofloxacin,Antibiotics,596,539,18.4,8,574
+Insulin Glargine,Diabetes Medicine,225,236,7.2,6,243
+Zinc Sulfate,Vitamins,392,284,10.3,2,291
+Vitamin D3,Vitamins,293,536,20.4,5,660
+Omeprazole,Gastric Medicine,277,560,18.6,6,566
+Pantoprazole,Gastric Medicine,787,585,19.9,7,657
+Atorvastatin,Cardiovascular,368,332,10.2,1,291
+Amoxicillin,Antibiotics,273,627,21.1,6,690
+Tramadol,Pain Relief,325,276,10.5,5,326
+Metformin,Diabetes Medicine,794,1203,34.1,4,1194
+Zinc Sulfate,Vitamins,323,473,14.0,3,493
+Atorvastatin,Cardiovascular,473,944,29.3,3,958
+Aspirin,Pain Relief,109,601,17.8,4,556
+Atorvastatin,Cardiovascular,630,875,26.6,7,920
+Salbutamol,Respiratory,562,610,18.8,6,628
+Pantoprazole,Gastric Medicine,129,591,23.1,7,723
+Ciprofloxacin,Antibiotics,715,454,15.2,8,526
+Glimepiride,Diabetes Medicine,221,459,14.1,4,433
+Atorvastatin,Cardiovascular,849,764,27.2,8,963
+Loratadine,Allergy Medicine,250,561,16.8,6,545
+Ciprofloxacin,Antibiotics,305,367,12.2,6,431
+Insulin Glargine,Diabetes Medicine,283,271,8.4,7,324
+Amoxicillin,Antibiotics,113,587,18.7,7,654
+Tramadol,Pain Relief,311,269,8.0,5,268
+Salbutamol,Respiratory,100,538,16.5,8,583
+Fexofenadine,Allergy Medicine,674,362,14.0,4,409
+Fexofenadine,Allergy Medicine,385,462,12.9,3,449
+Vitamin C,Vitamins,1265,1104,40.9,1,1157
+Omeprazole,Gastric Medicine,365,698,25.2,3,798
+Metformin,Diabetes Medicine,505,692,20.8,5,648
+Cetirizine,Allergy Medicine,373,831,23.9,4,841
+Loratadine,Allergy Medicine,47,306,11.5,6,357
+Metformin,Diabetes Medicine,1064,869,28.1,2,955
+Ranitidine,Gastric Medicine,509,413,13.2,5,394
+Azithromycin,Antibiotics,88,334,12.9,4,390
+Ciprofloxacin,Antibiotics,361,291,9.4,9,359
+Insulin Glargine,Diabetes Medicine,170,138,5.2,7,164
+Glimepiride,Diabetes Medicine,187,383,12.6,6,418
+Cephalexin,Antibiotics,209,445,14.5,4,437
+Loratadine,Allergy Medicine,100,446,14.3,4,478
+Cetirizine,Allergy Medicine,495,548,20.6,4,655
+Vitamin C,Vitamins,360,926,26.9,5,862
+Ibuprofen,Pain Relief,150,708,23.1,4,676
+Amoxicillin,Antibiotics,805,678,21.0,3,641
+Amoxicillin,Antibiotics,559,833,24.4,5,837
+Azithromycin,Antibiotics,607,731,20.9,4,757
+Vitamin D3,Vitamins,624,425,16.3,6,507
+Cephalexin,Antibiotics,426,309,10.9,6,368
+Pantoprazole,Gastric Medicine,615,830,25.2,4,835
+Glimepiride,Diabetes Medicine,257,541,16.7,4,535
+Paracetamol,Pain Relief,926,652,24.5,3,807
+Amlodipine,Cardiovascular,662,586,22.6,5,690
+Zinc Sulfate,Vitamins,758,879,25.2,6,881
+Ranitidine,Gastric Medicine,232,472,16.8,3,560
+Ciprofloxacin,Antibiotics,432,497,13.9,5,477
+Glimepiride,Diabetes Medicine,522,339,11.1,5,293
+Aspirin,Pain Relief,234,429,14.2,6,488
+Aspirin,Pain Relief,253,229,8.5,2,264
+Azithromycin,Antibiotics,470,630,19.9,6,696
+Vitamin D3,Vitamins,418,421,13.7,8,443
+Metformin,Diabetes Medicine,115,574,20.1,4,678
+Amlodipine,Cardiovascular,309,603,20.5,2,661
+Ciprofloxacin,Antibiotics,568,401,15.0,6,467
+Loratadine,Allergy Medicine,366,467,15.8,5,491
+Vitamin D3,Vitamins,427,602,18.4,6,629
+Ciprofloxacin,Antibiotics,167,325,11.6,8,406
+Tramadol,Pain Relief,36,165,6.3,6,182
+Glimepiride,Diabetes Medicine,494,431,16.8,6,561
+Glimepiride,Diabetes Medicine,284,548,17.5,4,574
+Vitamin C,Vitamins,171,1009,30.7,5,1028
+Zinc Sulfate,Vitamins,316,347,12.5,6,380
+Cephalexin,Antibiotics,366,409,12.1,4,345
+Cetirizine,Allergy Medicine,167,840,26.3,3,932
+Ciprofloxacin,Antibiotics,176,169,5.7,6,194
+Paracetamol,Pain Relief,759,823,25.1,2,848
+Tramadol,Pain Relief,140,280,8.5,3,274
+Glimepiride,Diabetes Medicine,125,189,6.2,2,194
+Ranitidine,Gastric Medicine,95,454,14.8,4,504
+Montelukast,Respiratory,231,496,14.9,11,553
+Paracetamol,Pain Relief,1428,1259,36.8,1,1186
+Azithromycin,Antibiotics,370,356,12.5,3,379
+Atorvastatin,Cardiovascular,748,939,31.1,4,991
+Azithromycin,Antibiotics,336,636,21.5,5,673
+Metformin,Diabetes Medicine,1478,893,30.8,4,1030
+Glimepiride,Diabetes Medicine,110,577,18.2,9,583
+Glimepiride,Diabetes Medicine,485,473,16.2,3,507
+Omeprazole,Gastric Medicine,147,829,26.3,3,914
+Atorvastatin,Cardiovascular,455,530,19.2,5,539
+Pantoprazole,Gastric Medicine,896,830,29.3,4,868
+Amlodipine,Cardiovascular,539,582,21.8,4,664
+Atorvastatin,Cardiovascular,361,872,24.5,7,771
+Fexofenadine,Allergy Medicine,189,314,11.9,4,401
+Amoxicillin,Antibiotics,348,788,23.5,3,770
+Aspirin,Pain Relief,526,314,10.9,3,335
+Tramadol,Pain Relief,498,297,10.4,6,372
+Vitamin D3,Vitamins,212,263,9.7,3,335
+Zinc Sulfate,Vitamins,538,782,22.3,1,728
+Vitamin C,Vitamins,552,1168,36.9,7,1133
+Omeprazole,Gastric Medicine,811,994,33.4,2,995
+Cetirizine,Allergy Medicine,331,740,21.3,6,695
+Ranitidine,Gastric Medicine,155,359,10.4,3,357
+Insulin Glargine,Diabetes Medicine,209,258,8.5,7,309
+Omeprazole,Gastric Medicine,984,1019,32.8,4,1055
+Paracetamol,Pain Relief,501,962,34.2,6,1215
+Atorvastatin,Cardiovascular,114,591,23.0,7,763
+Amlodipine,Cardiovascular,458,580,18.2,5,580
+Amlodipine,Cardiovascular,451,611,18.5,2,557
+Tramadol,Pain Relief,294,379,13.7,5,472
+Pantoprazole,Gastric Medicine,347,638,23.3,5,685
+Salbutamol,Respiratory,435,459,17.0,3,479
+Fexofenadine,Allergy Medicine,424,341,12.9,3,437
+Metformin,Diabetes Medicine,591,728,23.1,5,779
+Loratadine,Allergy Medicine,516,463,14.0,8,503
+Pantoprazole,Gastric Medicine,259,643,18.6,5,650
+Cephalexin,Antibiotics,163,228,7.7,4,276
+Azithromycin,Antibiotics,87,496,16.1,3,514
+Metformin,Diabetes Medicine,573,637,23.3,5,696
+Montelukast,Respiratory,333,362,13.5,4,402
+Atorvastatin,Cardiovascular,184,780,28.9,7,866

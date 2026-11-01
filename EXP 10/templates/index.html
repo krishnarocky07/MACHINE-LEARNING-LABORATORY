@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Stock Prediction | ML Mini-Project</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Top Navigation Bar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="brand">
+                <span class="brand-icon">💊</span>
+                <div>
+                    <span class="brand-title">PharmaStock AI</span>
+                    <span class="brand-subtitle">Medicine Stock Prediction Using ML</span>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="#overview">Overview</a>
+                <a href="#dataset">Dataset</a>
+                <a href="#preprocessing">Preprocessing</a>
+                <a href="#eda">EDA Visualizations</a>
+                <a href="#training">Model Training</a>
+                <a href="#evaluation">Evaluation</a>
+                <a href="#predict" class="btn-predict-nav">Live Predictor</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-container">
+
+        <!-- Flash Alert Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-container">
+                    {% for category, message in messages %}
+                        <div class="flash-card flash-{{ category }}">
+                            <span class="flash-icon">⚠️</span>
+                            <span>{{ message }}</span>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        {% if artifacts_missing %}
+        <!-- Missing Artifacts Error State -->
+        <section class="section card error-banner">
+            <h2>⚠️ Model Artifacts Not Found</h2>
+            <p>{{ error_message }}</p>
+            <div class="code-block">
+                <code>python train_model.py</code>
+            </div>
+            <p>Run the training command in your terminal and refresh this page once completed.</p>
+        </section>
+        {% else %}
+
+        <!-- Hero & Disclaimer Banner -->
+        <section id="overview" class="hero-section card">
+            <div class="hero-content">
+                <div class="badge-tag">College ML Mini-Project Demonstration</div>
+                <h1 class="hero-title">Medicine Stock Prediction Using Linear Regression & Random Forest</h1>
+                <p class="hero-description">
+                    An end-to-end Machine Learning web application designed to forecast hospital pharmacy medicine requirements, 
+                    optimize inventory levels, avoid critical stock shortages, and eliminate unnecessary overstocking.
+                </p>
+                <div class="academic-callout">
+                    <span class="callout-icon">ℹ️</span>
+                    <div>
+                        <strong>Academic & Clinical Disclaimer:</strong>
+                        This system serves as an educational decision-support demonstration. 
+                        Demand predictions and inventory recommendations are algorithmic estimates based on historical consumption patterns 
+                        and should not replace qualified pharmacy management or clinical procurement protocols.
+                    </div>
+                </div>
+            </div>
+            <div class="workflow-steps-pills">
+                <span class="pill active">1. Problem Definition</span>
+                <span class="pill active">2. Data Inspection</span>
+                <span class="pill active">3. Preprocessing</span>
+                <span class="pill active">4. EDA</span>
+                <span class="pill active">5. Train-Test Split</span>
+                <span class="pill active">6. Cross-Validation</span>
+                <span class="pill active">7. Model Selection</span>
+                <span class="pill active">8. Evaluation</span>
+                <span class="pill active">9. Deployment</span>
+            </div>
+        </section>
+
+        <!-- STAGE 1: Dataset Collection & Inspection (Fig. 1) -->
+        <section id="dataset" class="section card">
+            <div class="section-header">
+                <div>
+                    <span class="section-tag">STAGE 1 & 2 • FIG. 1</span>
+                    <h2>Dataset Collection, Inspection & Summary Statistics</h2>
+                </div>
+                <span class="status-pill verified">Dataset Verified</span>
+            </div>
+            
+            <div class="dataset-disclosure-box">
+                <strong>📋 Dataset Source Disclosure:</strong>
+                Due to statutory patient confidentiality and proprietary hospital inventory restrictions, 
+                this project utilizes a carefully generated and documented 
+                <strong>Simulated Educational Demonstration Dataset</strong> (700 records, 7 attributes) 
+                modeled after hospital pharmacy replenishment dynamics with realistic seasonal and random consumption variations.
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-label">Total Records</span>
+                    <span class="stat-value">{{ metadata.preprocessing_summary.total_records }}</span>
+                    <span class="stat-desc">Hospital inventory rows</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Input Features</span>
+                    <span class="stat-value">{{ metadata.preprocessing_summary.input_features_count }}</span>
+                    <span class="stat-desc">4 Numerical, 2 Categorical</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Medicine Categories</span>
+                    <span class="stat-value">{{ metadata.preprocessing_summary.categories_count }}</span>
+                    <span class="stat-desc">Pain, Antibiotics, etc.</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Unique Medicines</span>
+                    <span class="stat-value">{{ metadata.preprocessing_summary.medicines_count }}</span>
+                    <span class="stat-desc">Standard hospital drugs</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Mean Predicted Demand</span>
+                    <span class="stat-value">{{ metadata.preprocessing_summary.target_stats.mean }}</span>
+                    <span class="stat-desc">Units per review cycle</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Mean Current Stock</span>
+                    <span class="stat-value">{{ metadata.preprocessing_summary.stock_stats.mean }}</span>
+                    <span class="stat-desc">Units currently in store</span>
+                </div>
+            </div>
+
+            <!-- First Five Records Table -->
+            <div class="sub-block">
+                <h3>First 5 Dataset Records Preview</h3>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Medicine Name</th>
+                                <th>Medicine Category</th>
+                                <th>Current Stock</th>
+                                <th>Previous Consumption</th>
+                                <th>Avg Daily Usage</th>
+                                <th>Supplier Delivery (Days)</th>
+                                <th>Target: Predicted Demand</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in first_five_records %}
+                            <tr>
+                                <td><strong>{{ row['Medicine Name'] }}</strong></td>
+                                <td><span class="category-badge">{{ row['Medicine Category'] }}</span></td>
+                                <td>{{ row['Current Stock'] }} units</td>
+                                <td>{{ row['Previous Consumption'] }} units</td>
+                                <td>{{ row['Average Daily Usage'] }} units/day</td>
+                                <td>{{ row['Supplier Delivery Time'] }} days</td>
+                                <td class="highlight-target">{{ row['Predicted Demand'] }} units</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Target & Stock Statistics Breakdown -->
+            <div class="stats-comparison-grid">
+                <div class="stat-detail-card">
+                    <h4>Target Variable Summary: Predicted Demand (units)</h4>
+                    <ul class="detail-list">
+                        <li><span>Minimum Demand:</span> <strong>{{ metadata.preprocessing_summary.target_stats.min }} units</strong></li>
+                        <li><span>Maximum Demand:</span> <strong>{{ metadata.preprocessing_summary.target_stats.max }} units</strong></li>
+                        <li><span>Mean Demand:</span> <strong>{{ metadata.preprocessing_summary.target_stats.mean }} units</strong></li>
+                        <li><span>Median Demand:</span> <strong>{{ metadata.preprocessing_summary.target_stats.median }} units</strong></li>
+                        <li><span>Standard Deviation:</span> <strong>{{ metadata.preprocessing_summary.target_stats.std }} units</strong></li>
+                    </ul>
+                </div>
+                <div class="stat-detail-card">
+                    <h4>Current Stock Quantity Summary (units)</h4>
+                    <ul class="detail-list">
+                        <li><span>Minimum Stock:</span> <strong>{{ metadata.preprocessing_summary.stock_stats.min }} units</strong></li>
+                        <li><span>Maximum Stock:</span> <strong>{{ metadata.preprocessing_summary.stock_stats.max }} units</strong></li>
+                        <li><span>Mean Stock:</span> <strong>{{ metadata.preprocessing_summary.stock_stats.mean }} units</strong></li>
+                        <li><span>Median Stock:</span> <strong>{{ metadata.preprocessing_summary.stock_stats.median }} units</strong></li>
+                        <li><span>Inventory Balance:</span> <strong>Ranges from stockout risk to surplus</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- STAGE 2: Data Preprocessing Summary (Fig. 2) -->
+        <section id="preprocessing" class="section card">
+            <div class="section-header">
+                <div>
+                    <span class="section-tag">STAGE 3 • FIG. 2</span>
+                    <h2>Data Preprocessing & Transformation Pipeline</h2>
+                </div>
+                <span class="status-pill verified">Preprocessing Clean</span>
+            </div>
+
+            <div class="preprocessing-grid">
+                <div class="pre-card">
+                    <div class="pre-icon">🔍</div>
+                    <h4>Missing Values Check</h4>
+                    <p class="pre-stat">{{ metadata.preprocessing_summary.missing_values }} Missing</p>
+                    <p class="pre-sub">All 700 rows contain 100% complete records across all columns.</p>
+                </div>
+                <div class="pre-card">
+                    <div class="pre-icon">📑</div>
+                    <h4>Duplicate Records Check</h4>
+                    <p class="pre-stat">{{ metadata.preprocessing_summary.duplicate_records }} Duplicates</p>
+                    <p class="pre-sub">Zero identical duplicate rows detected in the inventory repository.</p>
+                </div>
+                <div class="pre-card">
+                    <div class="pre-icon">🔢</div>
+                    <h4>Numeric & Non-Negative Check</h4>
+                    <p class="pre-stat">Verified Non-Negative</p>
+                    <p class="pre-sub">Stock, consumption, daily usage, and lead times are strictly numeric and &ge; 0.</p>
+                </div>
+                <div class="pre-card">
+                    <div class="pre-icon">🏷️</div>
+                    <h4>Categorical Feature Encoding</h4>
+                    <p class="pre-stat">OneHotEncoder</p>
+                    <p class="pre-sub">Encoded Medicine Name and Medicine Category with unknown-handling enabled.</p>
+                </div>
+            </div>
+
+            <div class="pipeline-flow-box">
+                <h4>Scikit-learn ColumnTransformer Pipeline Architecture</h4>
+                <div class="pipeline-diagram">
+                    <div class="pipe-box">
+                        <span class="pipe-title">Numerical Features (4)</span>
+                        <span class="pipe-items">Current Stock, Previous Consumption, Daily Usage, Delivery Time</span>
+                        <span class="pipe-action">&rarr; StandardScaler()</span>
+                    </div>
+                    <div class="pipe-separator">+</div>
+                    <div class="pipe-box">
+                        <span class="pipe-title">Categorical Features (2)</span>
+                        <span class="pipe-items">Medicine Name, Medicine Category</span>
+                        <span class="pipe-action">&rarr; OneHotEncoder(handle_unknown='ignore')</span>
+                    </div>
+                    <div class="pipe-separator">&rarr;</div>
+                    <div class="pipe-box pipe-highlight">
+                        <span class="pipe-title">Combined Feature Space</span>
+                        <span class="pipe-items">Fitted strictly on 80% training data</span>
+                        <span class="pipe-action">&rarr; Regressor Estimator</span>
+                    </div>
+                </div>
+                <p class="pipeline-note">
+                    <strong>Zero Data Leakage Guarantee:</strong> Preprocessing scalers and encoders are fitted solely on the training partition 
+                    (560 samples) and applied to the held-out test partition (140 samples) and incoming live user queries.
+                </p>
+            </div>
+        </section>
+
+        <!-- STAGE 3: Exploratory Data Analysis Visualizations (Fig. 3) -->
+        <section id="eda" class="section card">
+            <div class="section-header">
+                <div>
+                    <span class="section-tag">STAGE 4 • FIG. 3</span>
+                    <h2>Exploratory Data Analysis (EDA) Visualizations</h2>
+                </div>
+                <span class="status-pill active">Generated with Matplotlib & Seaborn</span>
+            </div>
+            <p class="section-intro">
+                The graphs below are dynamically rendered from the actual loaded dataset records, 
+                illustrating consumption distributions, category variations, lead time impacts, and feature correlations.
+            </p>
+
+            <div class="plots-grid">
+                <!-- Plot 1 -->
+                <div class="plot-card">
+                    <div class="plot-img-wrapper">
+                        <img src="{{ url_for('static', filename='plots/demand_distribution.png') }}" alt="Fig 3.1: Medicine Demand Distribution">
+                    </div>
+                    <div class="plot-caption">
+                        <h4>Fig 3.1 — Medicine Demand Distribution</h4>
+                        <p>Histogram with Kernel Density Estimation (KDE) highlighting hospital demand frequency, mean (red dashed line), and median (teal dotted line).</p>
+                    </div>
+                </div>
+
+                <!-- Plot 2 -->
+                <div class="plot-card">
+                    <div class="plot-img-wrapper">
+                        <img src="{{ url_for('static', filename='plots/stock_vs_demand.png') }}" alt="Fig 3.2: Current Stock vs Demand">
+                    </div>
+                    <div class="plot-caption">
+                        <h4>Fig 3.2 — Current Stock vs. Medicine Demand</h4>
+                        <p>Scatter plot categorized by medicine class, illustrating the disparity between available inventory and required stock demand.</p>
+                    </div>
+                </div>
+
+                <!-- Plot 3 -->
+                <div class="plot-card">
+                    <div class="plot-img-wrapper">
+                        <img src="{{ url_for('static', filename='plots/category_demand.png') }}" alt="Fig 3.3: Category Demand">
+                    </div>
+                    <div class="plot-caption">
+                        <h4>Fig 3.3 — Average Demand by Medicine Category</h4>
+                        <p>Horizontal bar chart comparing aggregate demand rates across therapeutic groups (Pain Relief, Antibiotics, Vitamins, Diabetes, etc.).</p>
+                    </div>
+                </div>
+
+                <!-- Plot 4 -->
+                <div class="plot-card">
+                    <div class="plot-img-wrapper">
+                        <img src="{{ url_for('static', filename='plots/consumption_analysis.png') }}" alt="Fig 3.4: Consumption Analysis">
+                    </div>
+                    <div class="plot-caption">
+                        <h4>Fig 3.4 — Previous Consumption vs. Predicted Demand</h4>
+                        <p>Regression trendline showing positive empirical correlation between historical patient consumption and replenishment demand.</p>
+                    </div>
+                </div>
+
+                <!-- Plot 5 -->
+                <div class="plot-card">
+                    <div class="plot-img-wrapper">
+                        <img src="{{ url_for('static', filename='plots/delivery_vs_demand.png') }}" alt="Fig 3.5: Delivery Time vs Demand">
+                    </div>
+                    <div class="plot-caption">
+                        <h4>Fig 3.5 — Supplier Delivery Time vs. Demand</h4>
+                        <p>Box plot illustrating how longer supplier delivery lead times necessitate larger inventory replenishment buffers to mitigate stockouts.</p>
+                    </div>
+                </div>
+
+                <!-- Plot 6 -->
+                <div class="plot-card">
+                    <div class="plot-img-wrapper">
+                        <img src="{{ url_for('static', filename='plots/feature_correlation.png') }}" alt="Fig 3.6: Feature Correlation Heatmap">
+                    </div>
+                    <div class="plot-caption">
+                        <h4>Fig 3.6 — Feature Correlation Heatmap</h4>
+                        <p>Pearson correlation matrix across numerical variables confirming strong predictive linkages between daily usage, consumption, and demand.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STAGE 4: Model Training & Cross-Validation Comparison (Fig. 4) -->
+        <section id="training" class="section card">
+            <div class="section-header">
+                <div>
+                    <span class="section-tag">STAGE 5 & 6 • FIG. 4</span>
+                    <h2>Model Training, 5-Fold Cross-Validation & Algorithm Selection</h2>
+                </div>
+                <span class="status-pill verified">Champion Selected: {{ metadata.model_metadata.selected_algorithm }}</span>
+            </div>
+
+            <div class="train-split-summary">
+                <div class="split-item">
+                    <span class="split-badge">Total Dataset</span>
+                    <strong>{{ metadata.model_metadata.sample_counts.total }} Records</strong>
+                </div>
+                <div class="split-arrow">&rarr;</div>
+                <div class="split-item train-accent">
+                    <span class="split-badge train">Training Set (80%)</span>
+                    <strong>{{ metadata.model_metadata.sample_counts.train }} Records</strong>
+                    <span class="split-note">Used for 5-Fold Cross-Validation</span>
+                </div>
+                <div class="split-separator">+</div>
+                <div class="split-item test-accent">
+                    <span class="split-badge test">Held-Out Test Set (20%)</span>
+                    <strong>{{ metadata.model_metadata.sample_counts.test }} Records</strong>
+                    <span class="split-note">Reserved solely for final evaluation</span>
+                </div>
+            </div>
+
+            <!-- Model Comparison Table -->
+            <div class="table-responsive">
+                <table class="data-table comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Regression Algorithm</th>
+                            <th>Model Purpose & Characteristics</th>
+                            <th>5-Fold CV Mean RMSE</th>
+                            <th>5-Fold CV Mean MAE</th>
+                            <th>5-Fold CV Mean R²</th>
+                            <th>Selection Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for model_name, res in metadata.model_metadata.cross_validation_results.items() %}
+                        <tr class="{% if model_name == metadata.model_metadata.selected_algorithm %}selected-row{% endif %}">
+                            <td>
+                                <strong>{{ model_name }}</strong>
+                                {% if model_name == metadata.model_metadata.selected_algorithm %}
+                                    <span class="badge-winner">🏆 Champion</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if model_name == 'Linear Regression' %}
+                                    Parametric baseline; fast, interpretable, models continuous linear consumption dynamics.
+                                {% else %}
+                                    Ensemble non-parametric regressor (100 trees); models non-linear interactions and thresholds.
+                                {% endif %}
+                            </td>
+                            <td>
+                                <strong>{{ res.mean_rmse }} ± {{ res.std_rmse }}</strong> units
+                            </td>
+                            <td>{{ res.mean_mae }} units</td>
+                            <td><strong>{{ (res.mean_r2 * 100) | round(2) }}%</strong> ({{ res.mean_r2 }})</td>
+                            <td>
+                                {% if model_name == metadata.model_metadata.selected_algorithm %}
+                                    <span class="status-pill champion">Selected (Lowest RMSE)</span>
+                                {% else %}
+                                    <span class="status-pill comparison">Benchmarked</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="selection-rationale-box">
+                <h4>🎯 Rigorous Model Selection Rationale</h4>
+                <p>
+                    In accordance with strict machine learning best practices, model selection was determined by the 
+                    <strong>lowest 5-Fold Cross-Validation Root Mean Squared Error (RMSE)</strong> computed solely on the training set. 
+                    <strong>{{ metadata.model_metadata.selected_algorithm }}</strong> achieved superior generalization 
+                    (CV RMSE = {{ metadata.model_metadata.cross_validation_results[metadata.model_metadata.selected_algorithm].mean_rmse }} units) 
+                    and was exported as the deployment pipeline. The held-out test data was never accessed during model comparison or tuning.
+                </p>
+            </div>
+        </section>
+
+        <!-- STAGE 5: Model Evaluation on Held-Out Test Set (Fig. 5) -->
+        <section id="evaluation" class="section card">
+            <div class="section-header">
+                <div>
+                    <span class="section-tag">STAGE 7 • FIG. 5</span>
+                    <h2>Held-Out Test Set Evaluation & Diagnostic Visualizations</h2>
+                </div>
+                <span class="status-pill verified">Evaluated on {{ metadata.model_metadata.sample_counts.test }} Test Samples</span>
+            </div>
+
+            <!-- Metric Cards Grid -->
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <span class="metric-label">Mean Absolute Error (MAE)</span>
+                    <span class="metric-value">{{ metadata.model_metadata.test_evaluation.MAE }} <small>units</small></span>
+                    <span class="metric-desc">Average absolute error magnitude across all test predictions.</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-label">Mean Squared Error (MSE)</span>
+                    <span class="metric-value">{{ metadata.model_metadata.test_evaluation.MSE }} <small>units²</small></span>
+                    <span class="metric-desc">Average squared prediction loss, penalizing larger deviations.</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-label">Root Mean Squared Error (RMSE)</span>
+                    <span class="metric-value">{{ metadata.model_metadata.test_evaluation.RMSE }} <small>units</small></span>
+                    <span class="metric-desc">Error measured in original medicine units; primary benchmark metric.</span>
+                </div>
+                <div class="metric-card highlight-metric">
+                    <span class="metric-label">Coefficient of Determination (R²)</span>
+                    <span class="metric-value">{{ metadata.model_metadata.test_evaluation.R2 }}</span>
+                    <span class="metric-desc">Explains <strong>{{ (metadata.model_metadata.test_evaluation.R2 * 100) | round(2) }}%</strong> of variance relative to mean demand.</span>
+                </div>
+            </div>
+
+            <!-- Evaluation Visualizations -->
+            <div class="eval-plots-grid">
+                <div class="plot-card">
+                    <div class="plot-img-wrapper">
+                        <img src="{{ url_for('static', filename='plots/actual_vs_predicted.png') }}" alt="Fig 5.1: Actual vs Predicted Demand">
+                    </div>
+                    <div class="plot-caption">
+                        <h4>Fig 5.1 — Actual vs. Predicted Medicine Demand</h4>
+                        <p>Scatter plot of test set predictions tightly clustered along the dashed ideal reference line (y = x), validating predictive fidelity.</p>
+                    </div>
+                </div>
+
+                <div class="plot-card">
+                    <div class="plot-img-wrapper">
+                        <img src="{{ url_for('static', filename='plots/residual_plot.png') }}" alt="Fig 5.2: Residual Plot">
+                    </div>
+                    <div class="plot-caption">
+                        <h4>Fig 5.2 — Diagnostic Residual Plot</h4>
+                        <p>Residuals (Actual &minus; Predicted) centered randomly around zero with no homoscedastic funneling, confirming linear assumption validity.</p>
+                    </div>
+                </div>
+
+                <div class="plot-card">
+                    <div class="plot-img-wrapper">
+                        <img src="{{ url_for('static', filename='plots/feature_importance.png') }}" alt="Fig 5.3: Feature Importance">
+                    </div>
+                    <div class="plot-caption">
+                        <h4>Fig 5.3 — Relative Feature Impact / Coefficients</h4>
+                        <p>Standardized magnitude ranking showing that Average Daily Usage and Historical Consumption dominate replenishment predictions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STAGE 6: Interactive Medicine Stock Prediction Tool (Fig. 6) -->
+        <section id="predict" class="section card predict-section">
+            <div class="section-header">
+                <div>
+                    <span class="section-tag">STAGE 8 • FIG. 6</span>
+                    <h2>Interactive Medicine Stock Prediction & Inventory Planning Tool</h2>
+                </div>
+                <span class="status-pill live">Live Model Inference</span>
+            </div>
+
+            <p class="section-intro">
+                Enter current hospital inventory parameters to generate real-time machine learning demand predictions 
+                and automated inventory replenishment recommendations.
+            </p>
+
+            <!-- Quick Preset Auto-Fill Bar -->
+            <div class="preset-bar">
+                <span class="preset-label">⚡ Quick Presets for Demo:</span>
+                <button type="button" class="btn-preset" onclick="fillPreset('Paracetamol', 'Pain Relief', 100, 250, 20.0, 5)">Low Stock Demo (Paracetamol)</button>
+                <button type="button" class="btn-preset" onclick="fillPreset('Amoxicillin', 'Antibiotics', 650, 600, 22.0, 4)">Sufficient Stock Demo (Amoxicillin)</button>
+                <button type="button" class="btn-preset" onclick="fillPreset('Vitamin C', 'Vitamins', 1400, 850, 30.0, 3)">Overstock Demo (Vitamin C)</button>
+                <button type="button" class="btn-preset" onclick="fillPreset('Metformin', 'Diabetes Medicine', 200, 800, 28.0, 4)">Diabetes Reorder (Metformin)</button>
+            </div>
+
+            <div class="prediction-layout">
+                <!-- Form Column -->
+                <div class="form-container">
+                    <form action="{{ url_for('index') }}#predict" method="POST" id="predictionForm" class="prediction-form">
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="medicine_name">Medicine Name <span class="required">*</span></label>
+                                <select id="medicine_name" name="medicine_name" required onchange="autoSelectCategory()">
+                                    {% for med in metadata.preprocessing_summary.medicines_list %}
+                                        <option value="{{ med }}" {% if form_data.medicine_name == med %}selected{% endif %}>{{ med }}</option>
+                                    {% endfor %}
+                                </select>
+                                <small class="form-hint">Selected hospital formulary medicine</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="medicine_category">Medicine Category <span class="required">*</span></label>
+                                <select id="medicine_category" name="medicine_category" required>
+                                    {% for cat in metadata.preprocessing_summary.categories_list %}
+                                        <option value="{{ cat }}" {% if form_data.medicine_category == cat %}selected{% endif %}>{{ cat }}</option>
+                                    {% endfor %}
+                                </select>
+                                <small class="form-hint">Therapeutic classification</small>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="current_stock">Current Stock Quantity (units) <span class="required">*</span></label>
+                                <input type="number" id="current_stock" name="current_stock" min="0" step="1" value="{{ form_data.current_stock }}" required>
+                                <small class="form-hint">Physical stock currently in pharmacy storage</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="previous_consumption">Previous Consumption (units) <span class="required">*</span></label>
+                                <input type="number" id="previous_consumption" name="previous_consumption" min="0" step="1" value="{{ form_data.previous_consumption }}" required>
+                                <small class="form-hint">Past month dispensing volume</small>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="average_daily_usage">Average Daily Usage (units/day) <span class="required">*</span></label>
+                                <input type="number" id="average_daily_usage" name="average_daily_usage" min="0.1" step="0.1" value="{{ form_data.average_daily_usage }}" required>
+                                <small class="form-hint">Estimated hospital patient burn rate</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="supplier_delivery_time">Supplier Delivery Time (days) <span class="required">*</span></label>
+                                <input type="number" id="supplier_delivery_time" name="supplier_delivery_time" min="1" max="60" step="1" value="{{ form_data.supplier_delivery_time }}" required>
+                                <small class="form-hint">Replenishment lead time required by supplier</small>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary">
+                                <span class="btn-icon">⚡</span> Run ML Prediction & Inventory Optimization
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Result Display Column -->
+                <div class="result-container">
+                    {% if prediction_result %}
+                    <div class="result-card">
+                        <div class="result-header">
+                            <span class="result-badge">Prediction Output</span>
+                            <span class="result-medicine-pill">{{ prediction_result.input.medicine_name }} &bull; {{ prediction_result.input.medicine_category }}</span>
+                        </div>
+
+                        <div class="result-status-banner {{ prediction_result.policy.status_class }}">
+                            <div class="status-indicator-dot"></div>
+                            <div>
+                                <span class="status-title">{{ prediction_result.policy.stock_status }}</span>
+                                <p class="status-explanation">{{ prediction_result.policy.status_message }}</p>
+                            </div>
+                        </div>
+
+                        <div class="result-metrics-grid">
+                            <div class="res-metric-item">
+                                <span class="res-label">🤖 ML Predicted Demand</span>
+                                <span class="res-value demand-highlight">{{ prediction_result.predicted_demand }} <small>units</small></span>
+                                <span class="res-sub">Estimated patient consumption</span>
+                            </div>
+
+                            <div class="res-metric-item">
+                                <span class="res-label">🛡️ Safety Stock Buffer</span>
+                                <span class="res-value">{{ prediction_result.policy.safety_stock }} <small>units</small></span>
+                                <span class="res-sub">Lead time surge protection</span>
+                            </div>
+
+                            <div class="res-metric-item">
+                                <span class="res-label">📦 Recommended Target Stock</span>
+                                <span class="res-value">{{ prediction_result.policy.recommended_stock }} <small>units</small></span>
+                                <span class="res-sub">Demand + Safety Stock</span>
+                            </div>
+
+                            <div class="res-metric-item reorder-accent">
+                                <span class="res-label">🛒 Recommended Reorder Qty</span>
+                                <span class="res-value">{{ prediction_result.policy.reorder_quantity }} <small>units</small></span>
+                                <span class="res-sub">max(0, Target &minus; Current)</span>
+                            </div>
+                        </div>
+
+                        <!-- Policy Explanation Box -->
+                        <div class="policy-details-box">
+                            <h5>Transparent Inventory Policy Breakdown</h5>
+                            <ul>
+                                <li><strong>Current Stock on Hand:</strong> {{ prediction_result.input.current_stock }} units</li>
+                                <li><strong>Safety Stock Formula:</strong> Daily Usage ({{ prediction_result.input.average_daily_usage }}) &times; &lceil;Lead Time ({{ prediction_result.input.supplier_delivery_time }}) &times; 0.5&rceil; = <strong>{{ prediction_result.policy.safety_stock }} units</strong></li>
+                                <li><strong>Recommended Stock Formula:</strong> Predicted Demand ({{ prediction_result.predicted_demand }}) + Safety Stock ({{ prediction_result.policy.safety_stock }}) = <strong>{{ prediction_result.policy.recommended_stock }} units</strong></li>
+                                <li><strong>Reorder Formula:</strong> max(0, {{ prediction_result.policy.recommended_stock }} &minus; {{ prediction_result.input.current_stock }}) = <strong>{{ prediction_result.policy.reorder_quantity }} units</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                    {% else %}
+                    <!-- Initial Placeholder State -->
+                    <div class="result-placeholder">
+                        <div class="placeholder-icon">📊</div>
+                        <h3>Prediction Results Display</h3>
+                        <p>Fill out the inventory parameters on the left or click any of the preset buttons above to view real-time ML demand predictions and reorder policies.</p>
+                        <div class="placeholder-tips">
+                            <span>💡 Tested with 24 hospital medicines</span>
+                            <span>⚡ Trained on 560 samples</span>
+                            <span>🎯 Zero data leakage pipeline</span>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+
+        {% endif %}
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p><strong>Medicine Stock Prediction System</strong> &bull; College Machine Learning Laboratory Mini-Project</p>
+            <p class="footer-sub">Technologies: Python, Flask, Scikit-learn, Pandas, NumPy, Matplotlib, Seaborn, Joblib, HTML5, CSS3, JavaScript.</p>
+            <p class="footer-disclaimer">Notice: Documented Educational Demonstration Project. Does not replace professional hospital inventory management systems or clinical procurement decisions.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Dynamic Interactions & Presets -->
+    <script>
+        const medicineCategoryMap = {
+            "Paracetamol": "Pain Relief",
+            "Ibuprofen": "Pain Relief",
+            "Tramadol": "Pain Relief",
+            "Aspirin": "Pain Relief",
+            "Amoxicillin": "Antibiotics",
+            "Azithromycin": "Antibiotics",
+            "Ciprofloxacin": "Antibiotics",
+            "Cephalexin": "Antibiotics",
+            "Cetirizine": "Allergy Medicine",
+            "Loratadine": "Allergy Medicine",
+            "Fexofenadine": "Allergy Medicine",
+            "Metformin": "Diabetes Medicine",
+            "Glimepiride": "Diabetes Medicine",
+            "Insulin Glargine": "Diabetes Medicine",
+            "Omeprazole": "Gastric Medicine",
+            "Pantoprazole": "Gastric Medicine",
+            "Ranitidine": "Gastric Medicine",
+            "Vitamin C": "Vitamins",
+            "Vitamin D3": "Vitamins",
+            "Zinc Sulfate": "Vitamins",
+            "Atorvastatin": "Cardiovascular",
+            "Amlodipine": "Cardiovascular",
+            "Salbutamol": "Respiratory",
+            "Montelukast": "Respiratory"
+        };
+
+        function autoSelectCategory() {
+            const medSelect = document.getElementById("medicine_name");
+            const catSelect = document.getElementById("medicine_category");
+            const selectedMed = medSelect.value;
+            if (medicineCategoryMap[selectedMed]) {
+                catSelect.value = medicineCategoryMap[selectedMed];
+            }
+        }
+
+        function fillPreset(name, category, currentStock, prevConsumption, dailyUsage, deliveryTime) {
+            document.getElementById("medicine_name").value = name;
+            document.getElementById("medicine_category").value = category;
+            document.getElementById("current_stock").value = currentStock;
+            document.getElementById("previous_consumption").value = prevConsumption;
+            document.getElementById("average_daily_usage").value = dailyUsage;
+            document.getElementById("supplier_delivery_time").value = deliveryTime;
+
+            // Highlight the form submit button
+            const btn = document.querySelector(".btn-primary");
+            btn.style.transform = "scale(1.02)";
+            setTimeout(() => { btn.style.transform = "scale(1)"; }, 300);
+        }
+    </script>
+</body>
+</html>
